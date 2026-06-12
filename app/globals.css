@@ -1,0 +1,226 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+/* ─── NADAZ Brand Tokens ─── */
+:root {
+  --color-brand-blue: #1b4f8a;
+  --color-brand-dark: #0a1628;
+  --color-brand-navy: #0f1f3d;
+  --color-brand-gold: #c9a84c;
+  --color-brand-gold-light: #e5c96d;
+  --color-brand-white: #e8eef8;
+  --color-brand-muted: #8899b3;
+  --color-glass-border: rgba(201, 168, 76, 0.2);
+  --color-glass-bg: rgba(27, 79, 138, 0.08);
+
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+
+  /* shadcn/ui tokens — dark NADAZ theme */
+  --background: #0a1628;
+  --foreground: #e8eef8;
+  --card: #0f1f3d;
+  --card-foreground: #e8eef8;
+  --popover: #0f1f3d;
+  --popover-foreground: #e8eef8;
+  --primary: #c9a84c;
+  --primary-foreground: #0a1628;
+  --secondary: #1b4f8a;
+  --secondary-foreground: #e8eef8;
+  --muted: #0f1f3d;
+  --muted-foreground: #8899b3;
+  --accent: rgba(27, 79, 138, 0.2);
+  --accent-foreground: #e8eef8;
+  --destructive: #ef4444;
+  --border: rgba(201, 168, 76, 0.2);
+  --input: rgba(201, 168, 76, 0.15);
+  --ring: #c9a84c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-jetbrains-mono);
+
+  --radius-lg: var(--radius-lg);
+  --radius-md: var(--radius-md);
+  --radius-sm: var(--radius-sm);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[--color-brand-dark] font-sans text-[--color-brand-white] antialiased;
+    background-image:
+      radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        rgba(27, 79, 138, 0.25),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 100% 100%,
+        rgba(201, 168, 76, 0.06),
+        transparent
+      );
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: rgba(201, 168, 76, 0.35);
+    color: var(--color-brand-white);
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-[--color-brand-gold];
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply rounded-2xl border border-[--color-glass-border] bg-[--color-glass-bg] backdrop-blur-md;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-[--color-brand-gold] font-sans font-semibold text-[--color-brand-dark] transition-all duration-300 ease-out;
+  }
+
+  .btn-primary:hover {
+    @apply scale-105 bg-[--color-brand-gold-light] shadow-[0_0_30px_rgba(201,168,76,0.35)];
+  }
+
+  .btn-primary:active {
+    @apply scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-[--color-glass-border] font-sans font-medium text-[--color-brand-white] transition-all duration-300 ease-out;
+  }
+
+  .btn-outline:hover {
+    @apply border-[--color-brand-gold]/50 bg-[--color-glass-bg] scale-[1.02];
+  }
+
+  .btn-outline:active {
+    @apply scale-[0.98];
+  }
+
+  .card-interactive {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-interactive:hover {
+    @apply -translate-y-1 border-[--color-brand-gold]/45 shadow-[0_0_40px_rgba(201,168,76,0.14)];
+  }
+
+  .card-interactive:active {
+    @apply scale-[0.99];
+  }
+
+  .link-gold {
+    @apply relative inline-block text-[--color-brand-muted] transition-colors duration-300 hover:text-[--color-brand-gold];
+  }
+
+  .link-gold::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-[--color-brand-gold] transition-all duration-300 ease-out;
+  }
+
+  .link-gold:hover::after,
+  .link-gold:focus-visible::after {
+    @apply w-full;
+  }
+
+  .nav-link {
+    @apply relative font-sans text-sm font-medium tracking-wide transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-[--color-brand-gold] transition-all duration-300 ease-out;
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    @apply w-full;
+  }
+
+  .nav-link-active::after {
+    @apply w-full;
+  }
+
+  .nav-shell {
+    @apply fixed inset-x-0 top-0 z-50 border-b transition-[background-color,backdrop-filter,box-shadow,padding,border-color] duration-500 ease-out;
+  }
+
+  .nav-shell-top {
+    @apply border-transparent bg-transparent py-4 sm:py-5;
+  }
+
+  .nav-shell-scrolled {
+    @apply border-[--color-glass-border] bg-[--color-brand-dark]/80 py-3 shadow-lg shadow-black/25 backdrop-blur-2xl;
+  }
+
+  .touch-target {
+    @apply min-h-11 min-w-11;
+  }
+}
+
+@media (hover: none) {
+  .card-interactive:active {
+    @apply -translate-y-0.5 border-[--color-brand-gold]/40 shadow-[0_0_24px_rgba(201,168,76,0.12)];
+  }
+
+  .btn-primary:active {
+    @apply bg-[--color-brand-gold-light] shadow-[0_0_24px_rgba(201,168,76,0.25)];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-word-inner,
+  .reveal-item,
+  .section-reveal,
+  .product-card,
+  .feature-card,
+  .portfolio-card,
+  .testimonial-card,
+  .contact-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

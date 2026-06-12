@@ -1,0 +1,228 @@
+# NADAZ Website — Cursor Rules
+# PT. Arta Prima Glassindo | nadaz.co.id
+
+## Project Identity
+You are building a premium, awwwards-level one-page landing page for NADAZ,
+a specialist glass & aluminum company in Jabodetabek, Indonesia.
+All UI text is in Bahasa Indonesia.
+
+---
+
+## Tech Stack (Strict)
+- Next.js 15 with App Router
+- TypeScript (strict mode)
+- Tailwind CSS v4
+- shadcn/ui for base UI components
+- GSAP 3 + ScrollTrigger + @gsap/react for ALL animations
+- Lucide React for icons
+- next/image for all images
+- next/font for typography
+
+Do NOT use:
+- Framer Motion (use GSAP instead)
+- Styled components or CSS modules
+- Any other animation library
+- Inline styles
+
+---
+
+## Brand & Design Rules
+
+### Colors (use CSS variables)
+```
+bg-[--color-brand-dark]    → #0A1628  (main background)
+bg-[--color-brand-navy]    → #0F1F3D  (card/surface background)
+text-[--color-brand-white] → #E8EEF8  (primary text)
+text-[--color-brand-muted] → #8899B3  (secondary text)
+text-[--color-brand-gold]  → #C9A84C  (accent, headings, CTAs)
+bg-[--color-brand-blue]    → #1B4F8A  (brand blue, buttons)
+```
+
+### Typography Classes
+```
+font-display  → Cormorant Garant (headings, display text)
+font-sans     → DM Sans (body text, UI)
+font-mono     → JetBrains Mono (labels, tags, captions)
+```
+
+### Glass Effect (use consistently)
+```tsx
+className="bg-[--color-glass-bg] backdrop-blur-md border border-[--color-glass-border] rounded-2xl"
+```
+
+---
+
+## Component Patterns
+
+### Section Template
+Every section follows this pattern:
+```tsx
+"use client"
+import { useRef } from "react"
+import { useGSAP } from "@gsap/react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+export default function XxxSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useGSAP(() => {
+    // animations scoped to sectionRef
+    gsap.fromTo(".reveal-item", 
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1, y: 0,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      }
+    )
+  }, { scope: sectionRef })
+
+  return (
+    <section id="[id]" ref={sectionRef} className="relative py-24 lg:py-32">
+      {/* content */}
+    </section>
+  )
+}
+```
+
+### Section Heading Pattern
+```tsx
+<div className="reveal-item">
+  <span className="font-mono text-xs tracking-[0.3em] text-[--color-brand-gold] uppercase mb-4 block">
+    {eyebrowText}
+  </span>
+  <h2 className="font-display text-4xl lg:text-6xl font-semibold text-[--color-brand-white] leading-tight">
+    {title}
+  </h2>
+</div>
+```
+
+### CTA Button (Primary — WhatsApp)
+```tsx
+<a
+  href="https://wa.me/6285328613613"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-3 px-8 py-4 bg-[--color-brand-gold] text-[--color-brand-dark] font-sans font-semibold rounded-full hover:bg-[--color-brand-gold-light] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]"
+>
+  <WhatsAppIcon />
+  Konsultasi Gratis
+</a>
+```
+
+---
+
+## GSAP Animation Rules
+
+1. **Register plugins ONCE** in `app/layout.tsx`, not in components
+2. **Always scope** animations with `{ scope: sectionRef }`
+3. **Always use** `@gsap/react`'s `useGSAP` hook, never `useEffect`
+4. **Standard eases**: `power3.out` (reveals), `expo.out` (dramatic), `sine.inOut` (ambient)
+5. **Stagger**: 0.08–0.15s for lists, 0.2–0.3s for large cards
+6. **Duration**: 0.6s–1.2s for reveals, 0.3s for hover/interaction
+
+### ScrollTrigger Defaults
+```ts
+scrollTrigger: {
+  trigger: element,
+  start: "top 80%",          // element top hits 80% of viewport
+  toggleActions: "play none none none",
+}
+```
+
+### Parallax Pattern
+```tsx
+useGSAP(() => {
+  gsap.to(".parallax-slow", {
+    y: -80,
+    ease: "none",
+    scrollTrigger: {
+      trigger: sectionRef.current,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1.5,
+    },
+  })
+}, { scope: sectionRef })
+```
+
+---
+
+## File & Import Conventions
+
+```typescript
+// Imports order:
+// 1. React/Next
+// 2. Third-party (gsap, lucide, etc.)
+// 3. Components (@/components/...)
+// 4. Hooks (@/hooks/...)
+// 5. Lib/Utils (@/lib/...)
+// 6. Types (@/types/...)
+```
+
+### Path Aliases (tsconfig)
+```
+@/ → root of project
+```
+
+---
+
+## Content Rules
+
+- All UI labels, headings, body text: **Bahasa Indonesia**
+- WhatsApp number: **085328613613** → link: `https://wa.me/6285328613613`
+- Instagram: `https://www.instagram.com/glassboardindonesia/`
+- Brand name: **NADAZ** (all caps in display, mixed in body)
+- Company: **PT. Arta Prima Glassindo**
+- Area layanan: **Jabodetabek** (Jakarta, Bogor, Depok, Tangerang, Bekasi)
+- USP: "Free ongkir & pemasangan seluruh Jabodetabek"
+
+---
+
+## Image Handling
+
+```tsx
+// Always use next/image
+import Image from "next/image"
+
+// Hero images: priority={true}
+// All others: lazy (default)
+// Always provide alt text in Indonesian
+// Aspect ratios: products 4:3, portfolio 16:9, clients 3:2
+```
+
+Placeholder for missing images:
+```tsx
+// Use a div with gradient placeholder
+<div className="aspect-[4/3] bg-gradient-to-br from-[--color-brand-navy] to-[--color-brand-dark] rounded-xl flex items-center justify-center">
+  <span className="text-[--color-brand-muted] text-sm">Foto segera hadir</span>
+</div>
+```
+
+---
+
+## Accessibility
+
+- All interactive elements: visible focus ring
+- Icon-only buttons: `aria-label` in Indonesian
+- Section headings: proper `h1` → `h2` → `h3` hierarchy
+- Images: meaningful alt text
+- Color contrast: minimum WCAG AA
+
+---
+
+## Do NOT
+
+- ❌ Add placeholder/lorem ipsum in final copy — use real Indonesian copy
+- ❌ Use `any` TypeScript type without comment
+- ❌ Forget `"use client"` on components using hooks/GSAP
+- ❌ Use `window` directly — guard with `typeof window !== "undefined"`
+- ❌ Add random decorative animations — every motion must serve UX
+- ❌ Hardcode pixel values — use Tailwind spacing scale
+- ❌ Skip mobile responsive — always test at `sm:` breakpoint
