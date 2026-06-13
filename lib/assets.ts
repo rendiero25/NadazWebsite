@@ -2,9 +2,12 @@
  * Path aset gambar website — semua file ada di public/images.
  */
 export const ASSETS = {
-  logo: "/images/logo/nadaz.jpg",
+  logo: "/images/logo/nadaz.png",
   logoCompany: "/images/logo/pt.jpg",
   hero: "/images/hero/glassboard-timah-karya.jpg",
+  heroPoster: "/images/hero/light-through-glass-poster.jpg",
+  heroVideoMp4: "/videos/hero-light-through-glass.mp4",
+  heroVideoWebm: "/videos/hero-light-through-glass.webm",
   about: "/images/about/insan-cendekia.jpg",
   products: {
     "magnetic-glassboard": "/images/hero/glassboard-timah-karya.jpg",

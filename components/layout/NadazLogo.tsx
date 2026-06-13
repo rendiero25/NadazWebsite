@@ -10,9 +10,9 @@ interface NadazLogoProps {
 }
 
 const sizeMap = {
-  sm: { height: 32, text: "text-xl" },
-  md: { height: 40, text: "text-2xl" },
-  lg: { height: 48, text: "text-3xl" },
+  sm: { height: 22, text: "text-base" },
+  md: { height: 28, text: "text-lg" },
+  lg: { height: 34, text: "text-xl" },
 } as const;
 
 export default function NadazLogo({
@@ -42,7 +42,7 @@ export default function NadazLogo({
       {showText && (
         <span
           className={cn(
-            "font-display font-semibold tracking-[0.12em] text-[--color-brand-white] uppercase",
+            "font-sans font-semibold tracking-[0.12em] text-[--color-brand-white] uppercase",
             text
           )}
         >

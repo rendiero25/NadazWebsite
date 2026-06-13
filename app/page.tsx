@@ -1,4 +1,5 @@
 import HeroSection from "@/components/sections/HeroSection";
+import TrustBarSection from "@/components/sections/TrustBarSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ProductsSection from "@/components/sections/ProductsSection";
 import FeaturesSection from "@/components/sections/FeaturesSection";
@@ -9,8 +10,9 @@ import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-background">
       <HeroSection />
+      <TrustBarSection />
       <AboutSection />
       <ProductsSection />
       <FeaturesSection />

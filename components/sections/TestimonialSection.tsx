@@ -32,42 +32,33 @@ export default function TestimonialSection() {
 
   useScrollReveal(sectionRef, {
     selector: ".testimonial-card",
-    stagger: 0.15,
+    stagger: 0.1,
   });
 
   return (
     <SectionShell
       ref={sectionRef}
       id="testimoni"
-      eyebrow="Testimoni"
-      title="Apa Kata Klien Kami"
-      description="Pengalaman nyata dari mitra yang telah mempercayakan proyek kaca mereka kepada NADAZ."
+      tone="navy"
+      title="Kata Mereka yang Sudah Mempercayakan Proyeknya"
+      description="Pengalaman nyata dari klien korporat, instansi, dan pemilik usaha di Jabodetabek."
     >
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="flex flex-row flex-wrap gap-4 lg:gap-5">
         {TESTIMONIALS.map((item) => (
           <blockquote
             key={item.id}
-            className="testimonial-card card-interactive glass-panel relative p-6 sm:p-8"
+            className="testimonial-card card-interactive content-card w-full p-6 sm:w-[calc(50%-0.5rem)] sm:p-7 lg:w-[calc(33.333%-0.85rem)]"
           >
-            <span
-              className="font-display pointer-events-none absolute top-2 left-5 text-7xl leading-none text-[--color-brand-gold]/20 select-none"
-              aria-hidden
-            >
-              &ldquo;
-            </span>
-
             <StarRating rating={item.rating} />
-
-            <p className="font-sans relative z-10 mt-5 text-sm leading-relaxed text-[--color-brand-muted]">
+            <p className="mt-4 text-sm leading-relaxed text-[--color-brand-muted]">
               {item.quote}
             </p>
-
-            <footer className="mt-6 border-t border-[--color-glass-border] pt-4">
-              <cite className="font-sans not-italic">
-                <span className="block font-medium text-[--color-brand-white]">
+            <footer className="mt-5 border-t border-[--color-glass-border] pt-4">
+              <cite className="not-italic">
+                <span className="block text-sm font-semibold text-[--color-brand-white]">
                   {item.name}
                 </span>
-                <span className="text-sm text-[--color-brand-muted]">
+                <span className="text-xs text-[--color-brand-muted]">
                   {item.role}
                 </span>
               </cite>

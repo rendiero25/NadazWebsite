@@ -12,6 +12,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { SITE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import AssetImage from "@/components/ui/AssetImage";
+import { Badge } from "@/components/ui/badge";
 
 type FilterValue = (typeof PORTFOLIO_FILTERS)[number];
 
@@ -32,18 +33,20 @@ export default function PortfolioSection() {
     <SectionShell
       ref={sectionRef}
       id="portofolio"
+      tone="elevated"
+      layout="wide"
       eyebrow="Portofolio"
-      title="Hasil Pengerjaan Kami"
-      description="Proyek-proyek terpilih dari klien korporat, instansi, dan komersial di Jabodetabek."
+      title="Bukti Kualitas dari Proyek Nyata"
+      description="Hasil pemasangan untuk klien korporat, instansi, dan komersial di seluruh Jabodetabek."
     >
-      <div className="mb-10 flex flex-wrap gap-2">
+      <div className="mb-8 flex flex-wrap gap-2">
         {PORTFOLIO_FILTERS.map((filter) => (
           <button
             key={filter}
             type="button"
             onClick={() => setActiveFilter(filter)}
             className={cn(
-              "touch-target rounded-full border px-5 py-2 font-mono text-xs tracking-wide uppercase transition-all duration-300",
+              "touch-target rounded-full border px-4 py-2 text-xs font-medium tracking-wide uppercase transition-all duration-300",
               activeFilter === filter
                 ? "border-[--color-brand-gold] bg-[--color-brand-gold]/15 text-[--color-brand-gold]"
                 : "border-[--color-glass-border] text-[--color-brand-muted] hover:border-[--color-brand-gold]/40 hover:text-[--color-brand-white]"
@@ -54,48 +57,48 @@ export default function PortfolioSection() {
         ))}
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         {filteredProjects.map((project) => (
           <article
             key={project.id}
-            className="portfolio-card card-interactive group relative overflow-hidden rounded-2xl border border-[--color-glass-border]"
+            className="portfolio-card card-interactive content-card"
           >
             <AssetImage
               src={project.image}
               alt={`Hasil pengerjaan ${project.client} — ${project.type}`}
-              className="aspect-[4/3] transition-transform duration-500 group-hover:scale-105"
-              imageClassName="transition-transform duration-500 group-hover:scale-105"
+              className="aspect-[4/3] rounded-none border-0 bg-[--color-brand-navy]"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
-
-            <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[--color-brand-dark] via-[--color-brand-dark]/70 to-transparent p-6 opacity-100 transition-opacity duration-300 lg:opacity-0 lg:group-hover:opacity-100">
-              <p className="font-mono text-xs text-[--color-brand-gold]">
+            <div className="border-t border-[--color-glass-border] p-5 sm:p-6">
+              <Badge
+                variant="outline"
+                className="mb-3 rounded-full border-[--color-brand-gold]/35 bg-[--color-brand-gold]/10 text-[10px] font-medium tracking-wide text-[--color-brand-gold] uppercase"
+              >
+                {project.category}
+              </Badge>
+              <p className="text-xs font-medium text-[--color-brand-gold]">
                 {project.type}
               </p>
-              <h3 className="font-display mt-1 text-lg font-semibold text-[--color-brand-white]">
+              <h3 className="mt-1 text-lg font-semibold text-[--color-brand-white]">
                 {project.client}
               </h3>
-              <p className="font-sans mt-1 flex items-center gap-1.5 text-sm text-[--color-brand-muted]">
-                <MapPin className="h-3.5 w-3.5 text-[--color-brand-gold]" />
+              <p className="mt-2 flex items-center gap-1.5 text-sm text-[--color-brand-muted]">
+                <MapPin className="h-3.5 w-3.5 shrink-0 text-[--color-brand-gold]" />
                 {project.location}
               </p>
-            </div>
-
-            <div className="absolute top-4 left-4 rounded-full border border-[--color-glass-border] bg-[--color-brand-dark]/70 px-3 py-1 font-mono text-[10px] tracking-wide text-[--color-brand-white] uppercase backdrop-blur-sm lg:group-hover:opacity-0">
-              {project.category}
             </div>
           </article>
         ))}
       </div>
 
-      <div className="reveal-item mt-12 text-center">
+      <div className="reveal-item mt-10 text-center">
         <a
           href={SITE.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-outline px-8 py-3 text-sm"
+          className="link-gold text-sm font-medium tracking-wide uppercase"
         >
-          Lihat Lebih Banyak di Instagram
+          Lihat proyek lainnya di Instagram
         </a>
       </div>
     </SectionShell>

@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Cormorant_Garamond,
-  DM_Sans,
-  JetBrains_Mono,
-} from "next/font/google";
+import { Outfit } from "next/font/google";
 import GsapProvider from "@/components/providers/GsapProvider";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
@@ -11,24 +7,10 @@ import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-jetbrains-mono",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -41,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | NADAZ",
   },
   description:
-    "NADAZ — spesialis glassboard Jakarta, kaca tempered Depok, cermin gym, partisi kaca & pintu aluminium Jabodetabek. Free ongkir & pemasangan. PT. Arta Prima Glassindo sejak 2016.",
+    "NADAZ — pemasangan kaca tempered & aluminium profesional di Jabodetabek. Glassboard, cermin gym, partisi kaca — gratis ongkir & pemasangan. PT. Arta Prima Glassindo sejak 2016.",
   keywords: [
     "glassboard jakarta",
     "kaca tempered depok",
@@ -66,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "NADAZ",
     title: "NADAZ — Spesialis Kaca & Aluminium Premium Jabodetabek",
     description:
-      "Solusi kaca premium untuk ruang profesional Anda. Glassboard, cermin gym, partisi kaca & aluminium — free ongkir & pemasangan Jabodetabek.",
+      "Kaca & aluminium premium dipasang profesional di Jabodetabek. Glassboard, cermin gym, partisi kaca — gratis ongkir & pemasangan sejak 2016.",
     images: [
       {
         url: "/og-image.jpg",
@@ -80,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "NADAZ — Spesialis Kaca & Aluminium Premium Jabodetabek",
     description:
-      "Solusi kaca premium untuk ruang profesional Anda. Free ongkir & pemasangan Jabodetabek.",
+      "Kaca & aluminium premium dipasang profesional di Jabodetabek. Gratis ongkir & pemasangan sejak 2016.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -103,11 +85,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="id"
-      className={`${cormorant.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
-    >
-      <body className="min-h-screen font-sans antialiased">
+    <html lang="id" className={outfit.variable}>
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <GsapProvider>
           <SmoothScroll>
             <ScrollProgress />

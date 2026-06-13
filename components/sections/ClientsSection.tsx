@@ -1,74 +1,45 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
-import { assetUrl } from "@/lib/assets";
-import { prefersReducedMotion } from "@/lib/motion";
 import SectionShell from "@/components/sections/SectionShell";
+import { assetUrl } from "@/lib/assets";
 import { CLIENTS } from "@/lib/data";
 
 export default function ClientsSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      if (prefersReducedMotion() || !trackRef.current) return;
-
-      const track = trackRef.current;
-      const totalWidth = track.scrollWidth / 2;
-
-      gsap.to(track, {
-        x: -totalWidth,
-        duration: 28,
-        ease: "none",
-        repeat: -1,
-      });
-    },
-    { scope: sectionRef }
-  );
-
-  const marqueeItems = [...CLIENTS, ...CLIENTS];
-
   return (
     <SectionShell
-      ref={sectionRef}
       id="klien"
+      tone="blue"
+      align="center"
       eyebrow="Klien Kami"
-      title="Dipercaya Oleh"
-      description="Perusahaan, instansi pemerintah, dan brand ternama telah mempercayakan proyek kaca mereka kepada NADAZ."
-      className="overflow-hidden"
+      title="Dipercaya Perusahaan & Instansi Terkemuka"
+      description="Dari BUMN hingga kementerian dan brand F&B nasional, mereka memilih NADAZ untuk presisi dan ketepatan waktu."
+      headerClassName="mx-auto text-center"
     >
-      <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[--color-brand-dark] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[--color-brand-dark] to-transparent" />
-
-        <div className="overflow-hidden">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {CLIENTS.map((client) => (
           <div
-            ref={trackRef}
-            className="flex w-max items-center gap-4 py-2"
-            aria-label="Daftar klien NADAZ"
+            key={client.name}
+            className="flex items-center gap-4 rounded-xl border border-[--color-glass-border] bg-white/80 px-5 py-4 transition-colors duration-300 hover:border-[--color-brand-gold]/35 hover:bg-[rgba(201,168,76,0.08)]"
           >
-            {marqueeItems.map((client, index) => (
-              <span
-                key={`${client.name}-${index}`}
-                className="inline-flex shrink-0 items-center gap-3 rounded-full border border-[--color-glass-border] bg-[--color-glass-bg] px-5 py-2.5 font-sans text-sm whitespace-nowrap text-[--color-brand-white] backdrop-blur-sm sm:px-6 sm:py-3"
-              >
-                {client.logo ? (
-                  <Image
-                    src={assetUrl(client.logo)}
-                    alt={`Logo ${client.name}`}
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 rounded-full object-cover"
-                  />
-                ) : null}
-                {client.name}
+            {client.logo ? (
+              <Image
+                src={assetUrl(client.logo)}
+                alt={`Logo ${client.name}`}
+                width={40}
+                height={40}
+                className="h-10 w-10 shrink-0 rounded-md object-contain"
+              />
+            ) : (
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-[--color-brand-gold]/25 bg-[--color-brand-gold]/10 text-xs font-semibold text-[--color-brand-gold]">
+                {client.name.charAt(0)}
               </span>
-            ))}
+            )}
+            <span className="text-sm font-medium text-[--color-brand-white]">
+              {client.name}
+            </span>
           </div>
-        </div>
+        ))}
       </div>
     </SectionShell>
   );

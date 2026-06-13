@@ -6,21 +6,20 @@ import { Separator } from "@/components/ui/separator";
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-[--color-glass-border] bg-[--color-brand-navy]/50">
+    <footer className="relative border-t border-[--color-glass-border] bg-gradient-to-b from-[#fffdf9] to-[#f5efe3]">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <NadazLogo size="md" />
             <p className="font-sans mt-5 max-w-sm text-sm leading-relaxed text-[--color-brand-muted]">
-              {SITE.tagline}. Berpengalaman sejak 2016 melayani korporat,
-              instansi, dan personal di seluruh Jabodetabek.
+              {SITE.tagline}. Sejak 2016 melayani korporat, instansi pemerintah,
+              dan pemilik usaha di seluruh Jabodetabek, dengan gratis ongkir
+              dan pemasangan.
             </p>
           </div>
 
           <div className="lg:col-span-3">
-            <h3 className="font-mono mb-5 text-xs tracking-[0.25em] text-[--color-brand-gold] uppercase">
-              Tautan
-            </h3>
+            <h3 className="eyebrow-label mb-5">Tautan</h3>
             <ul className="space-y-3">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
@@ -36,9 +35,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-5">
-            <h3 className="font-mono mb-5 text-xs tracking-[0.25em] text-[--color-brand-gold] uppercase">
-              Kontak
-            </h3>
+            <h3 className="eyebrow-label mb-5">Kontak</h3>
             <ul className="space-y-4">
               <li>
                 <a
@@ -88,10 +85,10 @@ export default function Footer() {
         <Separator className="my-10 bg-[--color-glass-border]" />
 
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="font-mono text-xs text-[--color-brand-muted]">
+          <p className="text-xs text-[--color-brand-muted]">
             © 2025 {SITE.company}. All rights reserved.
           </p>
-          <p className="font-mono text-xs text-[--color-brand-muted]">
+          <p className="text-xs text-[--color-brand-muted]">
             {SITE.url.replace("https://", "")}
           </p>
         </div>

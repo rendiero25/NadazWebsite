@@ -11,45 +11,46 @@ import AssetImage from "@/components/ui/AssetImage";
 export default function ProductsSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  useScrollReveal(sectionRef, { selector: ".product-card", stagger: 0.1 });
+  useScrollReveal(sectionRef, { selector: ".product-card", stagger: 0.08 });
 
   return (
     <SectionShell
       ref={sectionRef}
       id="produk"
-      eyebrow="Produk & Jasa"
-      title="Solusi Lengkap untuk Setiap Kebutuhan Ruang"
-      description="Glassboard Jakarta, kaca tempered Depok, partisi kaca Jabodetabek — semua dipasang profesional dengan free ongkir & pemasangan."
+      tone="blue"
+      layout="wide"
+      title="Enam Solusi Kaca untuk Setiap Jenis Ruang"
+      description="Pilih produk, kami urus pengukuran, produksi, pengiriman, dan pemasangan tanpa biaya tambahan di Jabodetabek."
     >
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         {PRODUCTS.map((product) => (
           <article
             key={product.id}
-            className="product-card card-interactive group glass-panel overflow-hidden"
+            className="product-card card-interactive content-card group"
           >
             <AssetImage
               src={product.image}
               alt={`Foto produk ${product.name} NADAZ`}
-              className="aspect-[4/3] bg-[--color-brand-navy]"
+              className="aspect-[4/3] rounded-none border-0 bg-[--color-brand-navy]"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
-            <div className="p-6">
+            <div className="border-t border-[--color-glass-border] p-5 sm:p-6">
               <div className="flex items-start justify-between gap-3">
-                <h3 className="font-display text-xl font-semibold text-[--color-brand-white]">
+                <h3 className="text-lg font-semibold text-[--color-brand-white]">
                   {product.name}
                 </h3>
-                <ArrowUpRight className="h-5 w-5 shrink-0 text-[--color-brand-gold] opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-[--color-brand-gold] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
-              <p className="font-sans mt-3 text-sm leading-relaxed text-[--color-brand-muted]">
+              <p className="mt-2 text-sm leading-relaxed text-[--color-brand-muted]">
                 {product.description}
               </p>
               <a
                 href={SITE.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono mt-4 inline-block text-xs tracking-wide text-[--color-brand-gold] uppercase opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                className="mt-4 inline-block text-xs font-medium tracking-wide text-[--color-brand-gold] uppercase"
               >
-                Tanya produk ini →
+                Tanya & minta penawaran
               </a>
             </div>
           </article>

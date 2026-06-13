@@ -99,7 +99,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className="btn-primary px-6 py-2.5 text-sm"
             >
-              Konsultasi Gratis
+              Minta Penawaran Gratis
             </a>
           </div>
 
@@ -123,7 +123,7 @@ export default function Navbar() {
       <div
         id="mobile-menu"
         className={cn(
-          "fixed inset-0 z-40 bg-[--color-brand-dark]/95 backdrop-blur-2xl transition-all duration-500 md:hidden",
+          "fixed inset-0 z-40 bg-white/96 backdrop-blur-2xl transition-all duration-500 md:hidden",
           isMobileOpen
             ? "visible opacity-100"
             : "pointer-events-none invisible opacity-0"
@@ -140,7 +140,7 @@ export default function Navbar() {
               href={link.href}
               onClick={handleNavClick}
               className={cn(
-                "touch-target flex min-h-12 items-center font-display text-2xl font-semibold transition-colors sm:text-3xl",
+                "touch-target flex min-h-12 items-center text-2xl font-semibold transition-colors sm:text-3xl",
                 isLinkActive(link.href)
                   ? "text-[--color-brand-gold]"
                   : "text-[--color-brand-white] active:text-[--color-brand-gold]"
@@ -157,7 +157,7 @@ export default function Navbar() {
             onClick={handleNavClick}
             className="btn-primary mt-6 px-8 py-4"
           >
-            Konsultasi Gratis
+            Minta Penawaran Gratis
           </a>
         </nav>
       </div>

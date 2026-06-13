@@ -1,7 +1,7 @@
 export const SITE = {
   name: "NADAZ",
   company: "PT. Arta Prima Glassindo",
-  tagline: "Spesialis kaca & aluminium premium untuk Jabodetabek",
+  tagline: "Pemasangan kaca tempered & aluminium profesional di Jabodetabek",
   url: "https://nadaz.co.id",
   whatsapp: "085328613613",
   whatsappLink: "https://wa.me/6285328613613",

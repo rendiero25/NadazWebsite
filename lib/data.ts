@@ -43,42 +43,42 @@ export const PRODUCTS: Product[] = [
     id: "magnetic-glassboard",
     name: "Magnetic Glassboard",
     description:
-      "Papan tulis kaca magnet premium untuk ruang meeting, kantor, dan ruang presentasi modern.",
+      "Presentasi lebih profesional — papan tulis kaca magnet tahan gores, mudah dibersihkan, dan tampil premium di ruang meeting serta kantor eksekutif.",
     image: ASSETS.products["magnetic-glassboard"],
   },
   {
     id: "standing-glassboard",
     name: "Standing Glassboard",
     description:
-      "Glassboard berdiri fleksibel dengan kaki roda — ideal untuk brainstorming dan ruang kolaboratif.",
+      "Fleksibel dipindah ke ruang mana saja. Cocok untuk brainstorming cepat dan sesi kolaborasi tanpa perlu renovasi permanen.",
     image: ASSETS.products["standing-glassboard"],
   },
   {
     id: "cermin-gym",
     name: "Cermin Gym",
     description:
-      "Cermin dinding tempered tebal untuk studio fitness, gym, dan pusat kebugaran profesional.",
+      "Cermin tempered tebal 5–6 mm — aman untuk area latihan intensif, pantulan presisi tanpa distorsi, terpasang kokoh di dinding beton maupun gypsum.",
     image: ASSETS.products["cermin-gym"],
   },
   {
     id: "cermin-toilet",
     name: "Cermin Toilet / Studio",
     description:
-      "Cermin custom presisi untuk kamar mandi, ruang rias, salon, dan studio kecantikan.",
+      "Ukuran custom sesuai ruang Anda — tepi halus, pantulan jernih untuk kamar mandi, salon, dan studio kecantikan yang butuh presisi.",
     image: ASSETS.products["cermin-toilet"],
   },
   {
     id: "partisi-kaca",
     name: "Partisi Kaca",
     description:
-      "Sekat ruang elegan dengan frame aluminium presisi — transparan, kokoh, dan fungsional.",
+      "Membagi ruang tanpa kehilangan cahaya alami. Frame aluminium presisi, kokoh, dan mudah dirawat untuk kantor maupun area komersial.",
     image: ASSETS.products["partisi-kaca"],
   },
   {
     id: "pintu-aluminium",
     name: "Pintu & Jendela Aluminium",
     description:
-      "Sistem bukaan aluminium tahan lama dengan finishing rapi untuk hunian dan komersial.",
+      "Sistem bukaan tahan lama dengan engsel dan kunci berkualitas — finishing rapi untuk hunian maupun area komersial dengan traffic tinggi.",
     image: ASSETS.products["pintu-aluminium"],
   },
 ];
@@ -166,20 +166,20 @@ export const PORTFOLIO_FILTERS: Array<"Semua" | PortfolioCategory> = [
 ];
 
 export const CLIENTS: ClientItem[] = [
-  { name: "PT. HM Sampoerna Tbk", logo: "/images/clients/sampoerna.jpg" },
-  { name: "IFIT Indonesia" },
-  { name: "Kementerian Perindustrian RI" },
-  { name: "BNN" },
-  { name: "Polda Metro Jaya" },
-  { name: "Mie Gacoan" },
-  { name: "Artika Sari Devi" },
+  { name: "PT. HM Sampoerna Tbk", logo: "/images/logo/sampoerna.jpg" },
+  { name: "IFIT Indonesia", logo: "/images/logo/pt.jpg" },
+  { name: "Kementerian Perindustrian RI", logo: "/images/logo/pt.jpg" },
+  { name: "BNN", logo: "/images/logo/pt.jpg" },
+  { name: "Polda Metro Jaya", logo: "/images/logo/pt.jpg" },
+  { name: "Mie Gacoan", logo: "/images/logo/pt.jpg" },
+  { name: "Artika Sari Devi", logo: "/images/logo/pt.jpg" },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "heri",
     quote:
-      "Cermin gym 400 × 180 cm terpasang rapi di Tebet. Tim NADAZ profesional dari ukur sampai finishing, hasilnya sangat memuaskan.",
+      "Cermin gym 400 × 180 cm terpasang rapi di Tebet. Dari pengukuran sampai finishing, tim NADAZ tepat waktu dan hasilnya melebihi ekspektasi.",
     name: "Pak Heri Aji",
     role: "Pemilik Home Gym, Tebet Jakarta Selatan",
     rating: 5,
@@ -187,7 +187,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "liza",
     quote:
-      "Pemasangan cermin studio di Tangerang tepat waktu dan presisi. Komunikasi via WhatsApp responsif, free ongkir Jabodetabek sangat membantu.",
+      "Cermin studio di Tangerang terpasang presisi dan sesuai jadwal. Respons via WhatsApp cepat, dan gratis ongkir Jabodetabek benar-benar menghemat biaya proyek.",
     name: "Bu Liza Maulani",
     role: "Studio Fitness, Tangerang",
     rating: 5,
@@ -195,7 +195,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "dyah",
     quote:
-      "Cermin besar custom 730 × 200 cm untuk usaha di Depok dipasang dengan aman dan rapi. Kualitas kaca tempered terasa premium.",
+      "Cermin custom 730 × 200 cm untuk usaha di Depok dipasang aman dan rapi. Kualitas kaca tempered-nya terasa premium — tamu langsung notice.",
     name: "Bu Dyah",
     role: "Usaha Kuliner, Depok",
     rating: 5,
@@ -203,8 +203,8 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const ABOUT_STATS: StatItem[] = [
-  { id: "years", value: 9, suffix: "+", label: "Tahun berpengalaman" },
-  { id: "products", value: 500, suffix: "+", label: "Produk terpasang" },
-  { id: "clients", value: 50, suffix: "+", label: "Klien korporat" },
-  { id: "areas", value: 5, suffix: "", label: "Kota area layanan" },
+  { id: "years", value: 9, suffix: "+", label: "Tahun melayani Jabodetabek" },
+  { id: "products", value: 500, suffix: "+", label: "Unit kaca terpasang" },
+  { id: "clients", value: 50, suffix: "+", label: "Klien korporat & instansi" },
+  { id: "areas", value: 5, suffix: "", label: "Kota wilayah layanan" },
 ];

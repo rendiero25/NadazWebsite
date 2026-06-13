@@ -49,51 +49,52 @@ export default function AboutSection() {
     <SectionShell
       ref={sectionRef}
       id="tentang"
+      tone="navy"
       eyebrow="Tentang Kami"
-      title="Keahlian Kaca & Aluminium Sejak 2016"
-      description="Berawal dari spesialis glassboard, NADAZ berkembang menjadi PT. Arta Prima Glassindo — mitra terpercaya untuk proyek korporat, instansi pemerintah, dan kebutuhan personal di Jabodetabek."
+      title="9 Tahun Membangun Kepercayaan Lewat Kualitas Kaca"
+      description="PT. Arta Prima Glassindo (NADAZ), mitra pemasangan kaca tempered untuk korporat, instansi pemerintah, dan proyek komersial di Jabodetabek."
     >
-      <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="about-reveal space-y-6">
-          <p className="font-sans text-base leading-relaxed text-[--color-brand-muted] lg:text-lg">
-            Sejak 2016, kami fokus menghadirkan solusi kaca tempered premium
-            dengan pemasangan rapi dan tepat waktu. Dari kantor pemerintahan
-            hingga gym dan restoran, setiap proyek ditangani dengan standar
-            craftsmanship yang sama.
+      <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="about-reveal space-y-5">
+          <p className="text-base leading-relaxed text-[--color-brand-muted]">
+            Sejak 2016, kami fokus pada pemasangan kaca tempered yang presisi,
+            rapi, dan tepat waktu. Dari kantor pemerintahan hingga gym dan
+            restoran, setiap proyek ditangani dengan standar craftsmanship yang
+            sama.
           </p>
-          <p className="font-sans text-base leading-relaxed text-[--color-brand-muted] lg:text-lg">
-            Kini sebagai{" "}
-            <strong className="font-medium text-[--color-brand-white]">
+          <p className="text-base leading-relaxed text-[--color-brand-muted]">
+            Sebagai{" "}
+            <strong className="font-semibold text-[--color-brand-white]">
               PT. Arta Prima Glassindo
             </strong>
-            , NADAZ melayani Jakarta, Bogor, Depok, Tangerang, dan Bekasi dengan
-            komitmen free ongkir dan pemasangan untuk seluruh wilayah
-            Jabodetabek.
+            , NADAZ melayani Jakarta, Bogor, Depok, Tangerang, dan Bekasi
+            dengan pengiriman dan pemasangan gratis untuk seluruh Jabodetabek.
           </p>
         </div>
 
-        <div className="about-reveal relative">
-          <div className="glass-panel overflow-hidden">
-            <AssetImage
-              src={ASSETS.about}
-              alt="Hasil pemasangan etalase kaca NADAZ di instansi pendidikan Jabodetabek"
-              className="aspect-[4/3]"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </div>
+        <div className="about-reveal content-card overflow-hidden">
+          <AssetImage
+            src={ASSETS.about}
+            alt="Hasil pemasangan etalase kaca NADAZ di instansi pendidikan Jabodetabek"
+            className="aspect-[4/3]"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
         </div>
       </div>
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="metrics-strip reveal-item mt-12 grid gap-px sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
         {ABOUT_STATS.map((stat) => (
-          <div key={stat.id} className="reveal-item card-interactive glass-panel p-5 sm:p-6">
+          <div
+            key={stat.id}
+            className="bg-white/70 px-6 py-7 text-center sm:text-left"
+          >
             <p
               data-stat={stat.id}
-              className="font-display text-4xl font-semibold text-[--color-brand-gold]"
+              className="text-4xl font-semibold text-[--color-brand-gold] lg:text-5xl"
             >
               0{stat.suffix}
             </p>
-            <p className="font-sans mt-2 text-sm text-[--color-brand-muted]">
+            <p className="mt-2 text-sm text-[--color-brand-muted]">
               {stat.label}
             </p>
           </div>
