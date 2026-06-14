@@ -166,13 +166,13 @@ export const PORTFOLIO_FILTERS: Array<"Semua" | PortfolioCategory> = [
 ];
 
 export const CLIENTS: ClientItem[] = [
-  { name: "PT. HM Sampoerna Tbk", logo: "/images/logo/sampoerna.jpg" },
-  { name: "IFIT Indonesia", logo: "/images/logo/pt.jpg" },
-  { name: "Kementerian Perindustrian RI", logo: "/images/logo/pt.jpg" },
-  { name: "BNN", logo: "/images/logo/pt.jpg" },
-  { name: "Polda Metro Jaya", logo: "/images/logo/pt.jpg" },
-  { name: "Mie Gacoan", logo: "/images/logo/pt.jpg" },
-  { name: "Artika Sari Devi", logo: "/images/logo/pt.jpg" },
+  { name: "PT. HM Sampoerna Tbk", logo: "/logo/sampoerna.png" },
+  { name: "IFIT Indonesia", logo: "/logo/ifit.png" },
+  { name: "Kementerian Perindustrian RI", logo: "/logo/kemenper.png" },
+  { name: "BNN", logo: "/logo/bnn.png" },
+  { name: "Polda Metro Jaya", logo: "/logo/polda.png" },
+  { name: "Mie Gacoan", logo: "/logo/gacoan.webp" },
+  { name: "Artika Sari Devi", logo: "/logo/asd.jpg" },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
