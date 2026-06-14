@@ -74,6 +74,7 @@
   html {
     scroll-behavior: smooth;
     background-color: var(--background);
+    font-size: 18px;
   }
 
   body {
@@ -221,7 +222,7 @@
   }
 
   .nav-inner {
-    @apply py-2.5 sm:py-3;
+    @apply py-1.5 sm:py-2;
   }
 
   .touch-target {
@@ -448,7 +449,7 @@
   }
 
   .eyebrow-label {
-    @apply mb-3 block text-xs font-medium text-[--color-brand-gold] uppercase;
+    @apply mb-3 block text-sm font-medium text-[--color-brand-gold] uppercase;
   }
 
   .metrics-strip {
@@ -480,14 +481,22 @@
 
   .hero-word-inner,
   .hero-title,
+  .hero-cta-btn,
   .reveal-item,
   .section-reveal,
   .product-card,
   .feature-card,
   .portfolio-card,
+  .portfolio-filter,
+  .portfolio-cta,
   .testimonial-card,
-  .contact-reveal {
+  .contact-reveal,
+  .footer-reveal,
+  .trust-bar-enter,
+  .clients-enter,
+  .nav-link-item {
     opacity: 1 !important;
     transform: none !important;
+    visibility: visible !important;
   }
 }

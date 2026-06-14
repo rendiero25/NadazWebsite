@@ -29,6 +29,7 @@ export interface Testimonial {
   name: string;
   role: string;
   rating: number;
+  avatar: string;
 }
 
 export interface StatItem {
@@ -183,6 +184,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Pak Heri Aji",
     role: "Pemilik Home Gym, Tebet Jakarta Selatan",
     rating: 5,
+    avatar: "https://picsum.photos/seed/nadaz-heri-aji/128/128",
   },
   {
     id: "liza",
@@ -191,14 +193,16 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Bu Liza Maulani",
     role: "Studio Fitness, Tangerang",
     rating: 5,
+    avatar: "https://picsum.photos/seed/nadaz-liza-maulani/128/128",
   },
   {
     id: "dyah",
     quote:
-      "Cermin custom 730 × 200 cm untuk usaha di Depok dipasang aman dan rapi. Kualitas kaca tempered-nya terasa premium — tamu langsung notice.",
+      "Cermin custom 730 × 200 cm untuk usaha di Depok dipasang aman dan rapi. Kualitas kaca tempered-nya terasa premium, tamu langsung notice.",
     name: "Bu Dyah",
     role: "Usaha Kuliner, Depok",
     rating: 5,
+    avatar: "https://picsum.photos/seed/nadaz-dyah-depok/128/128",
   },
 ];
 

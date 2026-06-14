@@ -1,0 +1,216 @@
+<h2>Desain Hero — Untuk Disetujui</h2>
+<p class="subtitle">Preview high-fidelity. Cocok atau ada yang mau diubah?</p>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.hero-preview {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+  display: flex;
+  height: 360px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: linear-gradient(135deg, #fffdf9 0%, #f5efe3 100%);
+  position: relative;
+}
+
+/* Left panel */
+.hero-left {
+  width: 55%;
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Right panel */
+.hero-right {
+  flex: 1;
+  background: #d0c9bc;
+  position: relative;
+  overflow: hidden;
+}
+.hero-right-img {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  background: linear-gradient(145deg, #c8bfb0, #b0a898);
+}
+.hero-right-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(255,253,249,0.25) 0%, transparent 30%);
+}
+
+/* Floating project card */
+.project-card {
+  position: absolute;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 10px;
+  padding: 10px 12px;
+  border-left: 3px solid #C9A84C;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+.pc-label { font-size: 8px; font-weight: 700; color: #C9A84C; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2px; }
+.pc-title { font-size: 11px; font-weight: 700; color: #1a1814; margin-bottom: 2px; }
+.pc-meta { font-size: 9px; color: #6b6355; display: flex; gap: 8px; }
+.pc-dot { width: 6px; height: 6px; border-radius: 50%; background: #C9A84C; display: inline-block; margin-right: 4px; vertical-align: middle; }
+
+/* Left content elements */
+.badge-row { display: flex; gap: 6px; margin-bottom: 14px; }
+.badge {
+  font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+  background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35);
+  color: #8a6d1a;
+}
+
+.hero-h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1a1814;
+  line-height: 1.15;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+.hero-h1 em { color: #C9A84C; font-style: normal; }
+
+.hero-sub {
+  font-size: 12px;
+  color: #6b6355;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  max-width: 280px;
+}
+
+.cta-row { display: flex; gap: 8px; margin-bottom: 20px; }
+.btn-gold {
+  font-size: 10px; font-weight: 600; padding: 7px 16px; border-radius: 20px;
+  background: #C9A84C; color: #1a1814; cursor: pointer;
+}
+.btn-out {
+  font-size: 10px; font-weight: 600; padding: 7px 16px; border-radius: 20px;
+  border: 1.5px solid #C9A84C; color: #1a1814; background: transparent;
+}
+
+/* Stats strip */
+.stats-strip {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(201,168,76,0.22);
+  padding-top: 14px;
+}
+.stat-item { flex: 1; text-align: left; }
+.stat-item + .stat-item { border-left: 1px solid rgba(201,168,76,0.18); padding-left: 14px; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: #C9A84C; line-height: 1; }
+.stat-lbl { font-size: 8px; color: #6b6355; margin-top: 2px; line-height: 1.4; }
+
+/* Light beam accent */
+.beam {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(50px);
+  pointer-events: none;
+}
+.beam-1 { top: -20%; right: -5%; width: 50%; height: 60%; background: radial-gradient(ellipse, rgba(229,201,109,0.22) 0%, transparent 70%); }
+
+/* Mobile hint */
+.mobile-note {
+  margin-top: 16px;
+  padding: 8px 12px;
+  background: rgba(201,168,76,0.08);
+  border-radius: 8px;
+  font-size: 11px;
+  color: #6b6355;
+}
+.mobile-note strong { color: #1a1814; }
+</style>
+
+<div class="mockup">
+  <div class="mockup-header">Preview Desktop — Split Hero (85svh)</div>
+  <div class="mockup-body" style="padding: 0; background: #f0ebe3;">
+
+    <div class="hero-preview">
+      <!-- Beam accent -->
+      <div class="beam beam-1"></div>
+
+      <!-- LEFT: Content -->
+      <div class="hero-left">
+        <div class="badge-row">
+          <span class="badge">Sejak 2016</span>
+          <span class="badge">Jabodetabek</span>
+          <span class="badge">Gratis Pasang & Ongkir</span>
+        </div>
+
+        <h1 class="hero-h1">
+          Ruang Profesional<br>Dimulai dari<br><em>Kaca yang Tepat</em>
+        </h1>
+
+        <p class="hero-sub">
+          Glassboard korporat, cermin gym, partisi kaca tempered bersertifikat. Kami urus dari pengukuran hingga pemasangan.
+        </p>
+
+        <div class="cta-row">
+          <span class="btn-gold">Minta Penawaran Gratis</span>
+          <span class="btn-out">Jelajahi Produk</span>
+        </div>
+
+        <div class="stats-strip">
+          <div class="stat-item">
+            <div class="stat-num">500+</div>
+            <div class="stat-lbl">Proyek<br>Selesai</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">9</div>
+            <div class="stat-lbl">Tahun<br>Berpengalaman</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100+</div>
+            <div class="stat-lbl">Klien<br>Korporat</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Photo + card -->
+      <div class="hero-right">
+        <div class="hero-right-img">🏢</div>
+        <div class="hero-right-overlay"></div>
+        <div class="project-card">
+          <div class="pc-label">✦ Featured Project</div>
+          <div class="pc-title">PT HM Sampoerna — Glassboard Korporat</div>
+          <div class="pc-meta">
+            <span><span class="pc-dot"></span>Jakarta Selatan</span>
+            <span>Kaca Tempered 12mm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-note" style="margin: 12px;">
+      📱 <strong>Mobile:</strong> Panel kanan tersembunyi → konten full-width vertikal, stats strip 3 kolom tetap tampil di bawah CTA.
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Poin desain utama</h3>
+  <ul style="font-size:13px; color:#4a4640; line-height:2;">
+    <li>Headline pakai <strong>Cormorant Garamond</strong> — font display premium yang sudah ada di brand</li>
+    <li>Kata <em>"Kaca yang Tepat"</em> diwarnai gold sebagai visual anchor</li>
+    <li>3 badge pills di atas headline = trust signal instan</li>
+    <li>Stats strip di bawah CTA dengan garis pemisah tipis</li>
+    <li>Project card floating — animasi slide-up saat hero masuk</li>
+    <li>Height: <strong>85svh</strong> desktop, <strong>auto</strong> mobile</li>
+    <li>GSAP entrance tetap pakai pola yang sudah ada (stagger per elemen)</li>
+  </ul>
+</div>

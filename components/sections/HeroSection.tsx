@@ -90,7 +90,7 @@ export default function HeroSection() {
       className="relative flex min-h-[85svh] overflow-hidden bg-gradient-to-br from-white via-[#fffdf9] to-[#f5efe3]"
     >
       {/* Decorative light beams */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
         <div className="hero-light-beam hero-light-beam-1" />
         <div className="hero-light-beam hero-light-beam-2" />
         <div className="hero-glass-sheen" />

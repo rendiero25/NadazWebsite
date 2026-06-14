@@ -11,8 +11,8 @@ interface NadazLogoProps {
 
 const sizeMap = {
   sm: { height: 22, text: "text-base" },
-  md: { height: 28, text: "text-lg" },
-  lg: { height: 34, text: "text-xl" },
+  md: { height: 38, text: "text-xl" },
+  lg: { height: 44, text: "text-2xl" },
 } as const;
 
 export default function NadazLogo({

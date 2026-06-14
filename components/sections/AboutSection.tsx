@@ -50,11 +50,12 @@ export default function AboutSection() {
       ref={sectionRef}
       id="tentang"
       tone="navy"
+      fullWidthHeader
       eyebrow="Tentang Kami"
       title="9 Tahun Membangun Kepercayaan Lewat Kualitas Kaca"
       description="PT. Arta Prima Glassindo (NADAZ), mitra pemasangan kaca tempered untuk korporat, instansi pemerintah, dan proyek komersial di Jabodetabek."
     >
-      <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div className="about-reveal space-y-5">
           <p className="text-base leading-relaxed text-[--color-brand-muted]">
             Sejak 2016, kami fokus pada pemasangan kaca tempered yang presisi,
@@ -82,11 +83,11 @@ export default function AboutSection() {
         </div>
       </div>
 
-      <div className="metrics-strip reveal-item mt-12 grid gap-px sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+      <div className="metrics-strip mt-12 grid gap-px sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
         {ABOUT_STATS.map((stat) => (
           <div
             key={stat.id}
-            className="bg-white/70 px-6 py-7 text-center sm:text-left"
+            className="reveal-item bg-white/70 px-6 py-7 text-center sm:text-left"
           >
             <p
               data-stat={stat.id}

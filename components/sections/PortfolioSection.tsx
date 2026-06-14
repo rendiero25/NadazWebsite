@@ -2,6 +2,8 @@
 
 import { useMemo, useRef, useState } from "react";
 import { MapPin } from "lucide-react";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/motion";
 import SectionShell from "@/components/sections/SectionShell";
 import {
   PORTFOLIO_FILTERS,
@@ -27,14 +29,58 @@ export default function PortfolioSection() {
     );
   }, [activeFilter]);
 
-  useScrollReveal(sectionRef, { selector: ".portfolio-card", stagger: 0.08 });
+  const hasAnimatedPortfolio = useRef(false);
+
+  useScrollReveal(sectionRef, { selector: ".portfolio-filter", stagger: 0.06 });
+  useScrollReveal(sectionRef, { selector: ".portfolio-cta", stagger: 0, y: 24 });
+
+  useGSAP(
+    () => {
+      if (prefersReducedMotion() || !sectionRef.current) return;
+
+      const cards = sectionRef.current.querySelectorAll(".portfolio-card");
+      if (cards.length === 0) return;
+
+      const isFilterChange = hasAnimatedPortfolio.current;
+
+      gsap.fromTo(
+        cards,
+        { autoAlpha: 0, y: 24, scale: 0.98, force3D: true },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          stagger: 0.06,
+          duration: isFilterChange ? 0.5 : 0.65,
+          ease: "power3.out",
+          force3D: true,
+          ...(isFilterChange
+            ? {}
+            : {
+                scrollTrigger: {
+                  trigger: sectionRef.current,
+                  start: "top 82%",
+                  toggleActions: "play none none none",
+                  once: true,
+                },
+              }),
+        }
+      );
+
+      hasAnimatedPortfolio.current = true;
+    },
+    {
+      scope: sectionRef,
+      dependencies: [activeFilter],
+      revertOnUpdate: true,
+    }
+  );
 
   return (
     <SectionShell
       ref={sectionRef}
       id="portofolio"
-      tone="elevated"
-      layout="wide"
+      tone="gold"
       eyebrow="Portofolio"
       title="Bukti Kualitas dari Proyek Nyata"
       description="Hasil pemasangan untuk klien korporat, instansi, dan komersial di seluruh Jabodetabek."
@@ -46,7 +92,7 @@ export default function PortfolioSection() {
             type="button"
             onClick={() => setActiveFilter(filter)}
             className={cn(
-              "touch-target rounded-full border px-4 py-2 text-xs font-medium uppercase transition-all duration-300 cursor-pointer",
+              "portfolio-filter touch-target rounded-full border px-4 py-2 text-xs font-medium uppercase transition-all duration-300 cursor-pointer",
               activeFilter === filter
                 ? "border-[--color-brand-gold] bg-[--color-brand-gold]/15 text-[--color-brand-gold]"
                 : "border-[--color-glass-border] text-[--color-brand-muted] hover:border-[--color-brand-gold]/40 hover:text-[--color-brand-white]"
@@ -91,12 +137,12 @@ export default function PortfolioSection() {
         ))}
       </div>
 
-      <div className="reveal-item mt-10 text-center">
+      <div className="portfolio-cta mt-10 text-center">
         <a
           href={SITE.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          className="link-gold text-sm font-medium uppercase"
+          className="btn-primary inline-flex px-7 py-3 text-sm font-medium"
         >
           Lihat proyek lainnya di Instagram
         </a>

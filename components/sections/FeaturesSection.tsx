@@ -45,17 +45,19 @@ export default function FeaturesSection() {
 
       gsap.fromTo(
         ".feature-icon",
-        { scale: 0.7, opacity: 0 },
+        { scale: 0.75, autoAlpha: 0, force3D: true },
         {
           scale: 1,
-          opacity: 1,
-          stagger: 0.1,
-          duration: 0.6,
-          ease: "back.out(1.4)",
+          autoAlpha: 1,
+          stagger: 0.12,
+          duration: 0.65,
+          ease: "back.out(1.5)",
+          force3D: true,
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 75%",
+            start: "top 78%",
             toggleActions: "play none none none",
+            once: true,
           },
         }
       );

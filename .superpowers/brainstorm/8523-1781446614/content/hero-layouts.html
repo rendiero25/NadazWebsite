@@ -1,0 +1,133 @@
+<h2>Pilih Arah Layout Hero</h2>
+<p class="subtitle">Mana yang paling cocok untuk NADAZ — spesialis kaca & aluminium premium B2B Jabodetabek?</p>
+
+<style>
+  .hero-mock {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f5f0e8;
+    font-family: system-ui, sans-serif;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .h-tag {
+    display: inline-block;
+    background: #C9A84C;
+    color: #1a1814;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 20px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .h-title { font-size: 18px; font-weight: 700; color: #1a1814; line-height: 1.2; margin: 0 0 5px; }
+  .h-sub { font-size: 10px; color: #6b6355; margin: 0 0 10px; line-height: 1.5; }
+  .h-btn-row { display: flex; gap: 6px; }
+  .h-btn { font-size: 9px; font-weight: 600; padding: 5px 12px; border-radius: 20px; }
+  .h-btn-gold { background: #C9A84C; color: #1a1814; }
+  .h-btn-outline { border: 1.5px solid #C9A84C; color: #1a1814; background: transparent; }
+  .h-img { background: #d6cfc4; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #8a8070; }
+  .h-img-icon { font-size: 24px; display: block; }
+  .stats-row { display: flex; gap: 12px; margin-top: 8px; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 15px; font-weight: 700; color: #C9A84C; }
+  .stat-lbl { font-size: 8px; color: #6b6355; }
+  .badge-row { display: flex; gap: 4px; margin-bottom: 8px; flex-wrap: wrap; }
+  .badge { font-size: 8px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4); color: #8a6d1a; padding: 2px 7px; border-radius: 10px; }
+  .rec-tag { position: absolute; top: 8px; right: 8px; background: #1B4F8A; color: #fff; font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 10px; text-transform: uppercase; letter-spacing: .05em; }
+</style>
+
+<div class="cards">
+
+  <!-- Option A: Split Hero -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hero-mock" style="height: 200px; display: flex;">
+        <span class="rec-tag">⭐ Rekomendasi</span>
+        <!-- Left content pane -->
+        <div style="width: 55%; padding: 18px 16px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg,#fffdf9,#f5efe3);">
+          <div class="badge-row">
+            <span class="badge">Sejak 2016</span>
+            <span class="badge">Jabodetabek</span>
+          </div>
+          <div class="h-title" style="font-size:16px;">Kaca Premium,<br>Dipasang Presisi</div>
+          <div class="h-sub">Glassboard korporat, cermin gym, partisi kaca tempered bersertifikat.</div>
+          <div class="h-btn-row">
+            <span class="h-btn h-btn-gold">Minta Penawaran</span>
+            <span class="h-btn h-btn-outline">Jelajahi Produk</span>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><div class="stat-num">500+</div><div class="stat-lbl">Proyek Selesai</div></div>
+            <div class="stat"><div class="stat-num">9</div><div class="stat-lbl">Tahun Berpengalaman</div></div>
+            <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Gratis Pasang</div></div>
+          </div>
+        </div>
+        <!-- Right image pane -->
+        <div class="h-img" style="flex: 1; flex-direction: column; gap: 4px;">
+          <span class="h-img-icon">🏢</span>
+          <span>Foto produk / portofolio</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Split Hero (Kiri-Kanan)</h3>
+      <p>Konten kiri + gambar produk kanan. Tinggi 85–90% layar. Stat strip kecil di bawah CTA. Cocok untuk B2B: informasi padat, visual kuat.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Cinematic Full Page -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hero-mock" style="height: 200px; position: relative; display: flex; align-items: flex-end; background: linear-gradient(180deg,#2a3a4a 0%, #1a2530 100%);">
+        <!-- Background image hint -->
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.18;font-size:60px;">🏗️</div>
+        <!-- Dark overlay gradient -->
+        <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.5) 50%, rgba(10,22,40,0.2) 100%);"></div>
+        <!-- Centered content -->
+        <div style="position:relative;z-index:2;width:100%;padding:18px;text-align:center;">
+          <div class="h-tag">Spesialis Kaca & Aluminium Premium</div>
+          <div class="h-title" style="color:#fff;font-size:20px;margin-bottom:5px;">Kaca Premium,<br>Dipasang Presisi</div>
+          <div class="h-sub" style="color:rgba(255,255,255,0.65);margin-bottom:10px;">Glassboard korporat • Cermin Gym • Partisi Kaca</div>
+          <span class="h-btn h-btn-gold" style="display:inline-block;">Minta Penawaran Gratis</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Cinematic Dark Full-Page</h3>
+      <p>Foto/video proyek jadi background. Overlay gelap dramatis. Konten centered. Tinggi penuh 100svh. Satu CTA, headline besar. Kesan premium & bold.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Enhanced Current -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hero-mock" style="height: 200px; display: flex; flex-direction: column; justify-content: flex-end; background: linear-gradient(135deg,#fff 0%,#fff9ee 100%);">
+        <!-- Light beams hint -->
+        <div style="position:absolute;top:0;right:0;width:60%;height:100%;background:radial-gradient(ellipse at 80% 20%, rgba(229,201,109,0.3) 0%, transparent 70%);pointer-events:none;"></div>
+        <div style="padding: 14px 16px; position: relative; z-index:1;">
+          <div class="h-tag">Sejak 2016</div>
+          <div class="h-title" style="font-size:17px;">Kaca Premium,<br>Dipasang Presisi</div>
+          <div class="h-sub">Glassboard korporat, cermin gym, partisi kaca. Gratis ongkir & pemasangan.</div>
+          <div class="h-btn-row" style="margin-bottom:10px;">
+            <span class="h-btn h-btn-gold">Minta Penawaran</span>
+            <span class="h-btn h-btn-outline">Jelajahi Produk</span>
+          </div>
+          <!-- Extra: trust pills -->
+          <div class="badge-row">
+            <span class="badge">PT HM Sampoerna</span>
+            <span class="badge">Kemenperin RI</span>
+            <span class="badge">BNN</span>
+            <span class="badge">Polda Metro</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Enhanced Current (Iterasi)</h3>
+      <p>Pertahankan layout sekarang (kiri bawah, light theme) tapi lebih tinggi (75svh), tambah trust pills logo klien, dan headline lebih besar. Risiko paling rendah.</p>
+    </div>
+  </div>
+
+</div>

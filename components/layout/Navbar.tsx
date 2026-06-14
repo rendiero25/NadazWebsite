@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { cn } from "@/lib/utils";
+import { cn, PAGE_CONTAINER } from "@/lib/utils";
 import { NAV_LINKS, SITE, SECTION_IDS, type SectionId } from "@/lib/constants";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { prefersReducedMotion } from "@/lib/motion";
@@ -21,13 +21,28 @@ export default function Navbar() {
 
       gsap.fromTo(
         ".nav-inner",
-        { y: -80, opacity: 0 },
+        { y: -80, autoAlpha: 0, force3D: true },
         {
           y: 0,
-          opacity: 1,
+          autoAlpha: 1,
           duration: 0.9,
           ease: "power3.out",
           delay: 0.15,
+          force3D: true,
+        }
+      );
+
+      gsap.fromTo(
+        ".nav-link-item",
+        { autoAlpha: 0, y: -12, force3D: true },
+        {
+          autoAlpha: 1,
+          y: 0,
+          stagger: 0.06,
+          duration: 0.5,
+          ease: "power3.out",
+          delay: 0.35,
+          force3D: true,
         }
       );
     },
@@ -51,6 +66,26 @@ export default function Navbar() {
     };
   }, [isMobileOpen]);
 
+  useGSAP(
+    () => {
+      if (prefersReducedMotion() || !isMobileOpen) return;
+
+      gsap.fromTo(
+        "#mobile-menu nav a, #mobile-menu .btn-primary",
+        { autoAlpha: 0, y: 24, force3D: true },
+        {
+          autoAlpha: 1,
+          y: 0,
+          stagger: 0.07,
+          duration: 0.45,
+          ease: "power3.out",
+          force3D: true,
+        }
+      );
+    },
+    { scope: navRef, dependencies: [isMobileOpen] }
+  );
+
   const isLinkActive = (href: string) => {
     const id = href.replace("#", "") as SectionId;
     return activeSection === id;
@@ -69,7 +104,7 @@ export default function Navbar() {
           isScrolled ? "nav-shell-scrolled" : "nav-shell-top"
         )}
       >
-        <div className="nav-inner mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+        <div className={`nav-inner ${PAGE_CONTAINER} flex items-center justify-between`}>
           <NadazLogo size="sm" />
 
           <nav
@@ -81,7 +116,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "nav-link",
+                  "nav-link nav-link-item",
                   isLinkActive(link.href)
                     ? "text-[--color-brand-gold] nav-link-active"
                     : "text-[--color-brand-muted] hover:text-[--color-brand-white]"
@@ -97,7 +132,7 @@ export default function Navbar() {
               href={SITE.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary px-6 py-2.5 text-sm"
+              className="nav-link-item btn-primary px-6 py-2.5 text-sm"
             >
               Minta Penawaran Gratis
             </a>

@@ -18,7 +18,6 @@ export default function ProductsSection() {
       ref={sectionRef}
       id="produk"
       tone="blue"
-      layout="wide"
       title="Enam Solusi Kaca untuk Setiap Jenis Ruang"
       description="Pilih produk, kami urus pengukuran, produksi, pengiriman, dan pemasangan tanpa biaya tambahan di Jabodetabek."
     >
@@ -48,7 +47,7 @@ export default function ProductsSection() {
                 href={SITE.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-block text-xs font-medium text-[--color-brand-gold] uppercase"
+                className="btn-primary mt-4 inline-flex px-4 py-2 text-xs"
               >
                 Tanya & minta penawaran
               </a>

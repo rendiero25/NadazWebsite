@@ -1,7 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { Star } from "lucide-react";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/motion";
 import SectionShell from "@/components/sections/SectionShell";
 import { TESTIMONIALS } from "@/lib/data";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -9,7 +12,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 function StarRating({ rating }: { rating: number }) {
   return (
     <div
-      className="flex gap-1"
+      className="testimonial-stars flex gap-1"
       role="img"
       aria-label={`Rating ${rating} dari 5 bintang`}
     >
@@ -18,8 +21,8 @@ function StarRating({ rating }: { rating: number }) {
           key={index}
           className={
             index < rating
-              ? "h-4 w-4 fill-[--color-brand-gold] text-[--color-brand-gold]"
-              : "h-4 w-4 text-[--color-brand-muted]/40"
+              ? "h-4 w-4 fill-[#C9A84C] text-[#C9A84C]"
+              : "h-4 w-4 fill-none text-gray-300"
           }
         />
       ))}
@@ -34,6 +37,32 @@ export default function TestimonialSection() {
     selector: ".testimonial-card",
     stagger: 0.1,
   });
+
+  useGSAP(
+    () => {
+      if (prefersReducedMotion() || !sectionRef.current) return;
+
+      gsap.fromTo(
+        ".testimonial-stars svg",
+        { scale: 0, autoAlpha: 0, force3D: true },
+        {
+          scale: 1,
+          autoAlpha: 1,
+          stagger: 0.06,
+          duration: 0.45,
+          ease: "back.out(2)",
+          force3D: true,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        }
+      );
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <SectionShell
@@ -50,15 +79,22 @@ export default function TestimonialSection() {
             className="testimonial-card card-interactive content-card w-full p-6 sm:w-[calc(50%-0.5rem)] sm:p-7 lg:w-[calc(33.333%-0.85rem)]"
           >
             <StarRating rating={item.rating} />
-            <p className="mt-4 text-sm leading-relaxed text-[--color-brand-muted]">
+            <p className="mt-4 text-sm leading-relaxed text-[--color-brand-muted] sm:text-base">
               {item.quote}
             </p>
-            <footer className="mt-5 border-t border-[--color-glass-border] pt-4">
+            <footer className="mt-6 flex items-center gap-3 border-t border-[--color-glass-border] pt-5">
+              <Image
+                src={item.avatar}
+                alt={`Foto ${item.name}`}
+                width={52}
+                height={52}
+                className="h-[52px] w-[52px] shrink-0 rounded-full object-cover ring-2 ring-[--color-brand-gold]/35"
+              />
               <cite className="not-italic">
-                <span className="block text-sm font-semibold text-[--color-brand-white]">
+                <span className="block text-sm font-semibold text-[--color-brand-white] sm:text-base">
                   {item.name}
                 </span>
-                <span className="text-xs text-[--color-brand-muted]">
+                <span className="text-xs text-[--color-brand-muted] sm:text-sm">
                   {item.role}
                 </span>
               </cite>

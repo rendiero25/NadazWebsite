@@ -1,0 +1,115 @@
+<h2>Panel Kanan Hero — Isi Visual Apa?</h2>
+<p class="subtitle">Konten di sisi kanan split hero. Pilih yang paling kuat untuk calon klien B2B.</p>
+
+<style>
+  .rp-mock {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #e8e2d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui, sans-serif;
+    color: #6b6355;
+    font-size: 10px;
+    position: relative;
+  }
+  .img-slot {
+    background: #d0c9bc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8a8070;
+    font-size: 9px;
+    text-align: center;
+  }
+  .overlay-card {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 6px;
+    padding: 6px 8px;
+    border-left: 2px solid #C9A84C;
+  }
+  .oc-label { font-size: 8px; color: #C9A84C; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+  .oc-title { font-size: 10px; font-weight: 700; color: #1a1814; }
+  .oc-sub { font-size: 8px; color: #6b6355; }
+  .badge-sm { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4); color: #8a6d1a; font-size: 7px; padding: 1px 5px; border-radius: 8px; margin: 1px; }
+</style>
+
+<div class="cards">
+
+  <!-- Option A: Single Hero Image + Project Card Overlay -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="rp-mock" style="height:185px;">
+        <!-- Big image -->
+        <div style="position:absolute;inset:0;" class="img-slot">
+          <div style="text-align:center;">
+            <div style="font-size:36px;">🪟</div>
+            <div>Foto proyek terbaik<br>(full cover)</div>
+          </div>
+        </div>
+        <!-- Floating project card -->
+        <div class="overlay-card">
+          <div class="oc-label">Featured Project</div>
+          <div class="oc-title">PT HM Sampoerna — Glassboard</div>
+          <div class="oc-sub">Jakarta Selatan · Kaca Tempered 12mm</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Foto Tunggal + Project Card</h3>
+      <p>Satu foto portofolio besar, full cover. Di sudut bawah ada kartu kecil "Featured Project" yang muncul dengan animasi. Clean & bold.</p>
+    </div>
+  </div>
+
+  <!-- Option B: 2x2 Photo Grid -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="rp-mock" style="height:185px; padding:10px; gap:6px; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;">
+        <div class="img-slot" style="border-radius:6px;"><div>🏢<br>Kantor</div></div>
+        <div class="img-slot" style="border-radius:6px;"><div>🏋️<br>Gym</div></div>
+        <div class="img-slot" style="border-radius:6px;"><div>🍜<br>Restoran</div></div>
+        <div class="img-slot" style="border-radius:6px; position:relative;">
+          <div>🏛️<br>Instansi</div>
+          <div style="position:absolute;bottom:4px;right:4px;background:#C9A84C;color:#1a1814;font-size:7px;font-weight:700;padding:2px 5px;border-radius:4px;">+12 lainnya →</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Grid 2×2 Foto Portofolio</h3>
+      <p>Empat foto kategori berbeda (kantor, gym, restoran, instansi) dalam grid. Menunjukkan keluasan portfolio sekaligus. Cocok kalau foto sudah tersedia banyak.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Product Showcase Cards -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="rp-mock" style="height:185px; padding:10px; flex-direction:column; gap:5px; justify-content:center; background:#f5f0e8;">
+        <!-- 3 product pills -->
+        <div style="background:white;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,0.3);box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+          <span style="font-size:18px;">📋</span>
+          <div><div style="font-size:9px;font-weight:700;color:#1a1814;">Glassboard / Magnetic</div><div style="font-size:8px;color:#6b6355;">Papan tulis kaca premium</div></div>
+        </div>
+        <div style="background:white;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,0.3);box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+          <span style="font-size:18px;">🪞</span>
+          <div><div style="font-size:9px;font-weight:700;color:#1a1814;">Cermin Gym / Studio</div><div style="font-size:8px;color:#6b6355;">Wall mirror full length</div></div>
+        </div>
+        <div style="background:white;border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,0.3);box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+          <span style="font-size:18px;">🏗️</span>
+          <div><div style="font-size:9px;font-weight:700;color:#1a1814;">Partisi Kaca</div><div style="font-size:8px;color:#6b6355;">Tempered bersertifikat</div></div>
+        </div>
+        <div style="text-align:center;font-size:8px;color:#C9A84C;font-weight:600;">+ 3 produk lainnya →</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Product Showcase Cards</h3>
+      <p>Kartu produk bertumpuk dengan ikon & deskripsi singkat. Langsung tunjukkan apa yang dijual. Cocok kalau foto produk belum siap semua.</p>
+    </div>
+  </div>
+
+</div>

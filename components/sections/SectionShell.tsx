@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, useRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn, PAGE_CONTAINER } from "@/lib/utils";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export type SectionTone = "base" | "navy" | "blue" | "gold" | "elevated";
@@ -22,9 +22,9 @@ interface SectionShellProps {
   className?: string;
   children?: React.ReactNode;
   headerClassName?: string;
-  layout?: "default" | "wide";
   align?: "left" | "center";
   tone?: SectionTone;
+  fullWidthHeader?: boolean;
 }
 
 const SectionShell = forwardRef<HTMLElement, SectionShellProps>(
@@ -37,9 +37,9 @@ const SectionShell = forwardRef<HTMLElement, SectionShellProps>(
       className,
       children,
       headerClassName,
-      layout = "default",
       align = "left",
       tone = "base",
+      fullWidthHeader = false,
     },
     forwardedRef
   ) {
@@ -66,16 +66,13 @@ const SectionShell = forwardRef<HTMLElement, SectionShellProps>(
           className
         )}
       >
-        <div
-          className={cn(
-            "mx-auto px-6 lg:px-8",
-            layout === "wide" ? "max-w-[90rem]" : "max-w-7xl"
-          )}
-        >
+        <div className={PAGE_CONTAINER}>
           <div
             className={cn(
-              "mb-10 max-w-2xl lg:mb-12",
+              "mb-10 lg:mb-12",
+              !fullWidthHeader && "max-w-2xl",
               align === "center" && "mx-auto text-center",
+              fullWidthHeader && align !== "center" && "w-full max-w-none",
               headerClassName
             )}
           >
