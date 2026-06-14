@@ -105,7 +105,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="touch-target inline-flex items-center justify-center rounded-lg border border-[--color-glass-border] text-[--color-brand-white] transition-colors hover:border-[--color-brand-gold]/40 hover:bg-[--color-glass-bg] active:scale-95 md:hidden"
+            className="touch-target inline-flex items-center justify-center rounded-lg border border-[--color-glass-border] text-[--color-brand-white] transition-colors hover:border-[--color-brand-gold]/40 hover:bg-[--color-glass-bg] active:scale-95 cursor-pointer md:hidden"
             onClick={() => setIsMobileOpen((open) => !open)}
             aria-expanded={isMobileOpen}
             aria-controls="mobile-menu"
