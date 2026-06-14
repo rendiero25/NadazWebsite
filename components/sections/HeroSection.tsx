@@ -11,7 +11,7 @@ const BADGES = ["Sejak 2016", "Jabodetabek", "Gratis Pasang & Ongkir"] as const;
 
 const STATS = [
   { num: "500+", label: "Proyek Selesai" },
-  { num: "9", label: "Tahun Berpengalaman" },
+  { num: "10", label: "Tahun Berpengalaman" },
   { num: "100+", label: "Klien Korporat" },
 ] as const;
 
