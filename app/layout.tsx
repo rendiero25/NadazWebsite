@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Cormorant_Garamond } from "next/font/google";
 import GsapProvider from "@/components/providers/GsapProvider";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
@@ -11,6 +11,13 @@ const outfit = Outfit({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-outfit",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -71,12 +78,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icons/nadaz-logo.jpg", type: "image/jpeg" },
-      { url: "/icons/nadaz-icon.svg", type: "image/svg+xml" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon.ico", sizes: "any" },
     ],
-    apple: "/icons/apple-touch-icon.png",
-    shortcut: "/icons/nadaz-icon.svg",
+    apple: "/favicon/apple-touch-icon.png",
+    shortcut: "/favicon/favicon.ico",
   },
+  manifest: "/favicon/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -85,7 +94,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={outfit.variable}>
+    <html lang="id" className={`${outfit.variable} ${cormorant.variable}`}>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <GsapProvider>
           <SmoothScroll>
