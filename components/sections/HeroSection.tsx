@@ -86,7 +86,7 @@ export default function HeroSection() {
             </a>
             <a
               href="#produk"
-              className="btn-outline w-full border-[--color-brand-gold]/35 bg-white/60 px-7 py-3 text-sm sm:w-auto sm:px-8 sm:py-3.5"
+              className="btn-outline w-full px-7 py-3 text-sm sm:w-auto sm:px-8 sm:py-3.5"
             >
               Jelajahi Produk
             </a>

@@ -48,7 +48,7 @@ export default function ProductsSection() {
                 href={SITE.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-block text-xs font-medium tracking-wide text-[--color-brand-gold] uppercase"
+                className="mt-4 inline-block text-xs font-medium text-[--color-brand-gold] uppercase"
               >
                 Tanya & minta penawaran
               </a>

@@ -42,7 +42,7 @@ export default function NadazLogo({
       {showText && (
         <span
           className={cn(
-            "font-sans font-semibold tracking-[0.12em] text-[--color-brand-white] uppercase",
+            "font-sans font-semibold text-[--color-brand-white] uppercase",
             text
           )}
         >

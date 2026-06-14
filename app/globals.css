@@ -132,11 +132,15 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-[--color-brand-gold] font-sans font-semibold text-[--color-on-gold] transition-all duration-300 ease-out;
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold transition-all duration-300 ease-out cursor-pointer;
+    background-color: var(--color-brand-gold);
+    color: var(--color-on-gold);
   }
 
   .btn-primary:hover {
-    @apply scale-105 bg-[--color-brand-gold-light] shadow-[0_0_30px_rgba(201,168,76,0.35)];
+    @apply scale-105;
+    background-color: var(--color-brand-gold-light);
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.35);
   }
 
   .btn-primary:active {
@@ -144,7 +148,7 @@
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-[--color-glass-border] font-sans font-medium text-[--color-brand-white] transition-all duration-300 ease-out;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-[--color-brand-gold] font-sans font-medium text-[--color-brand-white] transition-all duration-300 ease-out cursor-pointer;
   }
 
   .btn-outline:hover {
@@ -173,7 +177,7 @@
   }
 
   .link-gold {
-    @apply relative inline-block text-[--color-brand-muted] transition-colors duration-300 hover:text-[--color-brand-gold];
+    @apply relative inline-block text-[--color-brand-muted] transition-colors duration-300 hover:text-[--color-brand-gold] cursor-pointer;
   }
 
   .link-gold::after {
@@ -187,7 +191,7 @@
   }
 
   .nav-link {
-    @apply relative font-sans text-sm font-medium tracking-wide transition-colors duration-300;
+    @apply relative font-sans text-sm font-medium transition-colors duration-300 cursor-pointer;
   }
 
   .nav-link::after {
@@ -444,7 +448,7 @@
   }
 
   .eyebrow-label {
-    @apply mb-3 block text-xs font-medium tracking-[0.2em] text-[--color-brand-gold] uppercase;
+    @apply mb-3 block text-xs font-medium text-[--color-brand-gold] uppercase;
   }
 
   .metrics-strip {
@@ -458,7 +462,9 @@
   }
 
   .btn-primary:active {
-    @apply bg-[--color-brand-gold-light] shadow-[0_0_24px_rgba(201,168,76,0.25)];
+    @apply scale-[0.98];
+    background-color: var(--color-brand-gold-light);
+    box-shadow: 0 0 24px rgba(201, 168, 76, 0.25);
   }
 }
 

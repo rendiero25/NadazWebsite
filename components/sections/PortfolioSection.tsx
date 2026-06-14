@@ -46,7 +46,7 @@ export default function PortfolioSection() {
             type="button"
             onClick={() => setActiveFilter(filter)}
             className={cn(
-              "touch-target rounded-full border px-4 py-2 text-xs font-medium tracking-wide uppercase transition-all duration-300",
+              "touch-target rounded-full border px-4 py-2 text-xs font-medium uppercase transition-all duration-300 cursor-pointer",
               activeFilter === filter
                 ? "border-[--color-brand-gold] bg-[--color-brand-gold]/15 text-[--color-brand-gold]"
                 : "border-[--color-glass-border] text-[--color-brand-muted] hover:border-[--color-brand-gold]/40 hover:text-[--color-brand-white]"
@@ -72,7 +72,7 @@ export default function PortfolioSection() {
             <div className="border-t border-[--color-glass-border] p-5 sm:p-6">
               <Badge
                 variant="outline"
-                className="mb-3 rounded-full border-[--color-brand-gold]/35 bg-[--color-brand-gold]/10 text-[10px] font-medium tracking-wide text-[--color-brand-gold] uppercase"
+                className="mb-3 rounded-full border-[--color-brand-gold]/35 bg-[--color-brand-gold]/10 text-[10px] font-medium text-[--color-brand-gold] uppercase"
               >
                 {project.category}
               </Badge>
@@ -96,7 +96,7 @@ export default function PortfolioSection() {
           href={SITE.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          className="link-gold text-sm font-medium tracking-wide uppercase"
+          className="link-gold text-sm font-medium uppercase"
         >
           Lihat proyek lainnya di Instagram
         </a>

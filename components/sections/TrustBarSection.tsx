@@ -13,7 +13,7 @@ export default function TrustBarSection() {
       className="section-tone-elevated border-y border-[--color-glass-border] py-4"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 sm:flex-row sm:items-center sm:gap-6 lg:px-8">
-        <p className="shrink-0 text-xs font-medium tracking-[0.2em] text-[--color-brand-gold] uppercase">
+        <p className="shrink-0 text-xs font-medium text-[--color-brand-gold] uppercase">
           Dipercaya oleh
         </p>
 
