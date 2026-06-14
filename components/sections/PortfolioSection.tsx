@@ -94,8 +94,8 @@ export default function PortfolioSection() {
             className={cn(
               "portfolio-filter touch-target rounded-full border px-4 py-2 text-xs font-medium uppercase transition-all duration-300 cursor-pointer",
               activeFilter === filter
-                ? "border-[--color-brand-gold] bg-[--color-brand-gold]/15 text-[--color-brand-gold]"
-                : "border-[--color-glass-border] text-[--color-brand-muted] hover:border-[--color-brand-gold]/40 hover:text-[--color-brand-white]"
+                ? "border-[#1B4F8A] bg-[#1B4F8A] text-white"
+                : "border-[--color-glass-border] text-[--color-brand-muted] hover:border-[#1B4F8A]/40 hover:text-[--color-brand-white]"
             )}
           >
             {filter}
@@ -118,7 +118,7 @@ export default function PortfolioSection() {
             <div className="border-t border-[--color-glass-border] p-5 sm:p-6">
               <Badge
                 variant="outline"
-                className="mb-3 rounded-full border-[--color-brand-gold]/35 bg-[--color-brand-gold]/10 text-[10px] font-medium text-[--color-brand-gold] uppercase"
+                className="mb-3 rounded-full border-transparent bg-[#1a1814] text-[10px] font-medium text-white uppercase"
               >
                 {project.category}
               </Badge>

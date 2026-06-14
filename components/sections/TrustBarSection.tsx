@@ -23,9 +23,9 @@ export default function TrustBarSection() {
     <section
       ref={sectionRef}
       aria-label="Klien yang mempercayai NADAZ"
-      className="section-tone-elevated overflow-hidden border-y border-[--color-glass-border] py-6"
+      className="section-tone-elevated shrink-0 overflow-hidden border-y border-[--color-glass-border] py-5 sm:py-6"
     >
-      <div className="relative overflow-hidden">
+      <div className="relative flex min-h-[5.5rem] items-center overflow-hidden sm:min-h-[6.5rem]">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-white to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-white to-transparent" />
 

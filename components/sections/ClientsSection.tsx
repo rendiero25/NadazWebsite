@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import SectionShell from "@/components/sections/SectionShell";
+import { PAGE_CONTAINER } from "@/lib/utils";
 import { assetUrl } from "@/lib/assets";
 import { CLIENTS } from "@/lib/data";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -12,27 +12,35 @@ export default function ClientsSection() {
   const items = [...CLIENTS, ...CLIENTS, ...CLIENTS];
 
   useScrollReveal(sectionRef, {
-    selector: ".clients-enter",
+    selector: ".section-reveal",
     y: 24,
     duration: 0.85,
     scale: 1,
-    stagger: 0,
+    stagger: 0.08,
   });
 
   return (
-    <SectionShell
+    <section
       ref={sectionRef}
       id="klien"
-      tone="blue"
-      align="center"
-      eyebrow="Klien Kami"
-      title="Dipercaya Perusahaan & Instansi Terkemuka"
-      description="Dari BUMN hingga kementerian dan brand F&B nasional, mereka memilih NADAZ untuk presisi dan ketepatan waktu."
-      headerClassName="mx-auto text-center"
+      className="section-tone-blue relative flex min-h-svh flex-col py-12 sm:py-16"
     >
-      <div className="clients-enter relative overflow-hidden rounded-2xl">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white to-transparent sm:w-16" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent sm:w-16" />
+      <div className={`${PAGE_CONTAINER} shrink-0`}>
+        <div className="section-reveal mx-auto mb-8 max-w-2xl text-center lg:mb-10">
+          <span className="eyebrow-label">Klien Kami</span>
+          <h2 className="text-3xl font-semibold leading-tight text-[--color-brand-white] sm:text-4xl lg:text-5xl">
+            Dipercaya Perusahaan & Instansi Terkemuka
+          </h2>
+          <p className="mt-4 text-base text-[--color-brand-muted] sm:text-lg">
+            Dari BUMN hingga kementerian dan brand F&B nasional, mereka memilih
+            NADAZ untuk presisi dan ketepatan waktu.
+          </p>
+        </div>
+      </div>
+
+      <div className="clients-enter relative flex flex-1 items-center overflow-hidden py-4">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-24" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent sm:w-24" />
 
         <div className="clients-marquee trust-marquee flex w-max items-center gap-10 py-3 sm:gap-14">
           {items.map((client, index) => (
@@ -60,6 +68,6 @@ export default function ClientsSection() {
           ))}
         </div>
       </div>
-    </SectionShell>
+    </section>
   );
 }

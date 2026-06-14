@@ -18,6 +18,8 @@
   --radius-md: 0.75rem;
   --radius-sm: 0.5rem;
 
+  --nav-height: 4.25rem;
+
   /* shadcn/ui tokens — light gold NADAZ theme */
   --background: #faf8f4;
   --foreground: #1a1814;
@@ -222,7 +224,7 @@
   }
 
   .nav-inner {
-    @apply py-1.5 sm:py-2;
+    @apply pb-1.5 pt-2.5 sm:pb-2 sm:pt-3;
   }
 
   .touch-target {

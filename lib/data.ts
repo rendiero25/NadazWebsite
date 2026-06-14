@@ -7,6 +7,7 @@ export interface Product {
   name: string;
   description: string;
   image: string;
+  category: string;
 }
 
 export interface PortfolioProject {
@@ -46,6 +47,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Presentasi lebih profesional — papan tulis kaca magnet tahan gores, mudah dibersihkan, dan tampil premium di ruang meeting serta kantor eksekutif.",
     image: ASSETS.products["magnetic-glassboard"],
+    category: "Glassboard",
   },
   {
     id: "standing-glassboard",
@@ -53,6 +55,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Fleksibel dipindah ke ruang mana saja. Cocok untuk brainstorming cepat dan sesi kolaborasi tanpa perlu renovasi permanen.",
     image: ASSETS.products["standing-glassboard"],
+    category: "Glassboard",
   },
   {
     id: "cermin-gym",
@@ -60,6 +63,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Cermin tempered tebal 5–6 mm — aman untuk area latihan intensif, pantulan presisi tanpa distorsi, terpasang kokoh di dinding beton maupun gypsum.",
     image: ASSETS.products["cermin-gym"],
+    category: "Cermin",
   },
   {
     id: "cermin-toilet",
@@ -67,6 +71,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Ukuran custom sesuai ruang Anda — tepi halus, pantulan jernih untuk kamar mandi, salon, dan studio kecantikan yang butuh presisi.",
     image: ASSETS.products["cermin-toilet"],
+    category: "Cermin",
   },
   {
     id: "partisi-kaca",
@@ -74,6 +79,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Membagi ruang tanpa kehilangan cahaya alami. Frame aluminium presisi, kokoh, dan mudah dirawat untuk kantor maupun area komersial.",
     image: ASSETS.products["partisi-kaca"],
+    category: "Partisi",
   },
   {
     id: "pintu-aluminium",
@@ -81,6 +87,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Sistem bukaan tahan lama dengan engsel dan kunci berkualitas — finishing rapi untuk hunian maupun area komersial dengan traffic tinggi.",
     image: ASSETS.products["pintu-aluminium"],
+    category: "Aluminium",
   },
 ];
 
@@ -202,7 +209,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Bu Dyah",
     role: "Usaha Kuliner, Depok",
     rating: 5,
-    avatar: "https://picsum.photos/seed/nadaz-dyah-depok/128/128",
+    avatar: ASSETS.portfolio["dyah-depok"],
   },
 ];
 

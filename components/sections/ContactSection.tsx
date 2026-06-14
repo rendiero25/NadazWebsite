@@ -100,7 +100,7 @@ export default function ContactSection() {
         <iframe
           title="Lokasi NADAZ di Google Maps"
           src={SITE.mapsEmbed}
-          className="aspect-[21/9] min-h-[280px] w-full border-0 sm:min-h-[360px]"
+          className="aspect-[21/9] min-h-[196px] w-full border-0 sm:min-h-[252px]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           allowFullScreen

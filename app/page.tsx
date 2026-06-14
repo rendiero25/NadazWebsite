@@ -11,8 +11,10 @@ import ContactSection from "@/components/sections/ContactSection";
 export default function Home() {
   return (
     <main className="bg-background">
-      <HeroSection />
-      <TrustBarSection />
+      <div className="flex min-h-svh flex-col">
+        <HeroSection />
+        <TrustBarSection />
+      </div>
       <AboutSection />
       <ProductsSection />
       <FeaturesSection />

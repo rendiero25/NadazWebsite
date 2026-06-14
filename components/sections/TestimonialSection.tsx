@@ -6,8 +6,14 @@ import { Star } from "lucide-react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
 import SectionShell from "@/components/sections/SectionShell";
+import { assetUrl } from "@/lib/assets";
 import { TESTIMONIALS } from "@/lib/data";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { cn } from "@/lib/utils";
+
+const AVATAR_OBJECT_POSITION: Partial<Record<string, string>> = {
+  dyah: "object-[28%_42%]",
+};
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -84,11 +90,18 @@ export default function TestimonialSection() {
             </p>
             <footer className="mt-6 flex items-center gap-3 border-t border-[--color-glass-border] pt-5">
               <Image
-                src={item.avatar}
+                src={
+                  item.avatar.startsWith("http")
+                    ? item.avatar
+                    : assetUrl(item.avatar)
+                }
                 alt={`Foto ${item.name}`}
                 width={52}
                 height={52}
-                className="h-[52px] w-[52px] shrink-0 rounded-full object-cover ring-2 ring-[--color-brand-gold]/35"
+                className={cn(
+                  "h-[52px] w-[52px] shrink-0 rounded-full object-cover ring-2 ring-[--color-brand-gold]/35",
+                  AVATAR_OBJECT_POSITION[item.id]
+                )}
               />
               <cite className="not-italic">
                 <span className="block text-sm font-semibold text-[--color-brand-white] sm:text-base">

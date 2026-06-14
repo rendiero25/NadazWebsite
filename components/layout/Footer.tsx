@@ -33,30 +33,6 @@ export default function Footer() {
       />
 
       <div className={`${PAGE_CONTAINER} relative py-14 sm:py-16 lg:py-20`}>
-        <div className="footer-reveal mb-12 flex flex-col gap-6 border-b border-white/15 pb-10 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-xl">
-            <p className="text-sm font-medium uppercase text-[--color-brand-gold]">
-              Siap mulai proyek?
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-[2.75rem]">
-              Konsultasi gratis via WhatsApp
-            </h2>
-            <p className="mt-3 max-w-lg text-base leading-relaxed text-white/75 sm:text-lg">
-              Gratis ongkir dan pemasangan seluruh Jabodetabek. Tim kami bantu
-              dari pengukuran hingga finishing.
-            </p>
-          </div>
-          <a
-            href={SITE.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-flex shrink-0 px-8 py-4 text-base font-semibold sm:text-lg"
-          >
-            <MessageCircle className="h-5 w-5" />
-            Chat Sekarang
-          </a>
-        </div>
-
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="footer-reveal lg:col-span-5">
             <NadazLogo size="lg" />
@@ -75,7 +51,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-base text-white/80 transition-colors hover:text-white sm:text-lg"
+                    className="text-base text-white transition-colors hover:text-[--color-brand-gold] sm:text-lg"
                   >
                     {link.label}
                   </Link>
@@ -94,7 +70,7 @@ export default function Footer() {
                   href={SITE.whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-start gap-3 text-white/80 transition-colors hover:text-white"
+                  className="group flex items-start gap-3 text-white transition-colors hover:text-[--color-brand-gold]"
                 >
                   <MessageCircle className="mt-1 h-5 w-5 shrink-0 text-[--color-brand-gold]" />
                   <span>
@@ -110,7 +86,7 @@ export default function Footer() {
                   href={SITE.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-start gap-3 text-white/80 transition-colors hover:text-white"
+                  className="group flex items-start gap-3 text-white transition-colors hover:text-[--color-brand-gold]"
                 >
                   <AtSign className="mt-1 h-5 w-5 shrink-0 text-[--color-brand-gold]" />
                   <span>
@@ -123,7 +99,7 @@ export default function Footer() {
                   </span>
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-white/80">
+              <li className="flex items-start gap-3 text-white">
                 <MapPin className="mt-1 h-5 w-5 shrink-0 text-[--color-brand-gold]" />
                 <span>
                   <span className="block text-base font-semibold text-white sm:text-lg">

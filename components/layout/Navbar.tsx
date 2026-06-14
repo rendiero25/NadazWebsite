@@ -105,27 +105,29 @@ export default function Navbar() {
         )}
       >
         <div className={`nav-inner ${PAGE_CONTAINER} flex items-center justify-between`}>
-          <NadazLogo size="sm" />
+          <div className="flex items-center gap-6 lg:gap-10">
+            <NadazLogo size="sm" />
 
-          <nav
-            className="hidden items-center gap-8 lg:gap-10 md:flex"
-            aria-label="Navigasi utama"
-          >
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "nav-link nav-link-item",
-                  isLinkActive(link.href)
-                    ? "text-[--color-brand-gold] nav-link-active"
-                    : "text-[--color-brand-muted] hover:text-[--color-brand-white]"
-                )}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+            <nav
+              className="hidden items-center gap-6 lg:gap-8 md:flex"
+              aria-label="Navigasi utama"
+            >
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "nav-link nav-link-item",
+                    isLinkActive(link.href)
+                      ? "text-[--color-brand-gold] nav-link-active"
+                      : "text-[--color-brand-muted] hover:text-[--color-brand-white]"
+                  )}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
 
           <div className="hidden items-center gap-4 md:flex">
             <a

@@ -7,6 +7,7 @@ import { PRODUCTS } from "@/lib/data";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { SITE } from "@/lib/constants";
 import AssetImage from "@/components/ui/AssetImage";
+import { Badge } from "@/components/ui/badge";
 
 export default function ProductsSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -34,6 +35,12 @@ export default function ProductsSection() {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             <div className="border-t border-[--color-glass-border] p-5 sm:p-6">
+              <Badge
+                variant="outline"
+                className="mb-3 rounded-full border-transparent bg-[#1a1814] text-[10px] font-medium text-white uppercase"
+              >
+                {product.category}
+              </Badge>
               <div className="flex items-start justify-between gap-3">
                 <h3 className="text-lg font-semibold text-[--color-brand-white]">
                   {product.name}
