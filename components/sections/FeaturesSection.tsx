@@ -58,6 +58,7 @@ export default function FeaturesSection() {
             start: "top 78%",
             toggleActions: "play none none none",
             once: true,
+            invalidateOnRefresh: true,
           },
         }
       );

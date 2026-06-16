@@ -24,7 +24,7 @@ const HERO_SLIDES = [
     alt: "Cahaya menembus kaca tempered NADAZ",
   },
   {
-    src: ASSETS.products["cermin-gym"],
+    src: ASSETS.products["cermin-home-gym"],
     alt: "Cermin gym tempered NADAZ",
   },
   {
@@ -143,6 +143,7 @@ export default function HeroSection() {
           start: "top top",
           end: "75% top",
           scrub: 1,
+          invalidateOnRefresh: true,
         },
       });
     },

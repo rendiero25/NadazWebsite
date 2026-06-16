@@ -10,17 +10,46 @@ export const ASSETS = {
   heroVideoWebm: "/videos/hero-light-through-glass.webm",
   about: "/images/about/insan-cendekia.jpg",
   products: {
-    "magnetic-glassboard": "/images/hero/glassboard-timah-karya.jpg",
-    "standing-glassboard": "/images/products/standing-glassboard.jpg",
-    "cermin-gym": "/images/products/cermin-gym.jpg",
-    "cermin-toilet": "/images/products/cermin-toilet.jpg",
-    "partisi-kaca": "/images/products/partisi-kaca.jpg",
-    "pintu-aluminium": "/images/products/pintu-aluminium.jpg",
+    glassboard:
+      "/images/products/GLASSBOARD/Foto glassboard/IMG_0451.jpg",
+    "glassboard-frame": "/images/products/GLASSBOARD FRAME/IMG_0269.jpg",
+    "cermin-besar": "/images/products/CERMIN BESAR/FOTO/IMG_0901.jpg",
+    "cermin-home-gym": "/images/products/CERMIN HOME GYM/IMG_0960.jpg",
+    "cermin-kaki-roda": "/images/products/CERMIN KAKI RODA/IMG_1125.jpg",
+    "cermin-toilet-wastafel":
+      "/images/products/CERMIN TOILET - WASTAFEL/IMG_0470.jpg",
+    etalase:
+      "/images/products/ETALASE/SMA insan cendekia boarding school sentul/kunci etalase 22-4-2026.jpg",
+    "coak-kaca": "/images/products/Coak kaca/IMG-20241012-WA0012.jpg",
   },
   portfolio: {
-    "sd-sqii": "/images/portfolio/sd-sqii.jpg",
-    "liza-tangerang": "/images/portfolio/liza-tangerang.jpg",
-    "dyah-depok": "/images/portfolio/dyah-depok.jpg",
+    "timah-karya":
+      "/images/products/GLASSBOARD/PT. Timah karya Persada Properti/3.jpg",
+    "glassboard-showcase":
+      "/images/products/GLASSBOARD/Foto glassboard/IMG_0451.jpg",
+    "glassboard-frame": "/images/products/GLASSBOARD FRAME/IMG_0269.jpg",
+    "sd-sqii":
+      "/images/products/CERMIN BESAR/SD SQII (sekolah quantum inti indonesia)/foto.jpg",
+    "heri-tebet":
+      "/images/products/CERMIN BESAR/Pak Heri Aji Tebet jaksel/400 x 180 cm foto.jpg",
+    "liza-tangerang":
+      "/images/products/CERMIN BESAR/Bu Liza Maulani Tangerang/foto 21-4-2026.jpg",
+    "dyah-depok":
+      "/images/products/CERMIN BESAR/Bu Dyah Kukusan Depok/17-4-2026 foto.jpg",
+    "cermin-besar-showcase": "/images/products/CERMIN BESAR/FOTO/IMG_0901.jpg",
+    "cermin-home-gym": "/images/products/CERMIN HOME GYM/IMG_0960.jpg",
+    "cermin-kaki-roda": "/images/products/CERMIN KAKI RODA/IMG_1125.jpg",
+    "cermin-toilet-wastafel":
+      "/images/products/CERMIN TOILET - WASTAFEL/IMG_0470.jpg",
+    "sma-insan-cendekia":
+      "/images/products/ETALASE/SMA insan cendekia boarding school sentul/kunci etalase 22-4-2026.jpg",
+    "lemari-piala":
+      "/images/products/ETALASE/Foto lemari piala/IMG-20241011-WA0002.jpg",
+    "coak-kaca": "/images/products/Coak kaca/IMG-20241012-WA0012.jpg",
+    "glasstone-sampoerna":
+      "/images/products/GLASSTONE/PT. HM Sampoerna/PT. HM Sampoerna.jpg",
+    "partisi-kaca": "/images/products/partisikaca.jpg",
+    "jendela-aluminium": "/images/products/pintualuminium.jpg",
   },
 } as const;
 

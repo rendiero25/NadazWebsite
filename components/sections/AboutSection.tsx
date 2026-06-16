@@ -35,6 +35,7 @@ export default function AboutSection() {
             trigger: el,
             start: "top 85%",
             toggleActions: "play none none none",
+            invalidateOnRefresh: true,
           },
           onUpdate: () => {
             el.textContent = `${Math.round(counter.value)}${stat.suffix}`;

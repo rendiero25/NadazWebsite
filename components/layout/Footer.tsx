@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-reveal lg:col-span-3">
-            <h3 className="mb-5 text-sm font-semibold uppercase text-[--color-brand-gold] sm:text-base">
+            <h3 className="mb-5 text-sm font-semibold uppercase text-white sm:text-base">
               Tautan
             </h3>
             <ul className="space-y-3.5">
@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
 
           <div className="footer-reveal lg:col-span-4">
-            <h3 className="mb-5 text-sm font-semibold uppercase text-[--color-brand-gold] sm:text-base">
+            <h3 className="mb-5 text-sm font-semibold uppercase text-white sm:text-base">
               Kontak
             </h3>
             <ul className="space-y-4">
@@ -70,14 +70,16 @@ export default function Footer() {
                   href={SITE.whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-start gap-3 text-white transition-colors hover:text-[--color-brand-gold]"
+                  className="group flex items-start gap-3 transition-colors hover:text-[--color-brand-gold]"
                 >
-                  <MessageCircle className="mt-1 h-5 w-5 shrink-0 text-[--color-brand-gold]" />
+                  <MessageCircle className="mt-1 h-5 w-5 shrink-0 text-white" />
                   <span>
                     <span className="block text-base font-semibold text-white sm:text-lg">
                       WhatsApp
                     </span>
-                    <span className="text-base sm:text-lg">{SITE.whatsapp}</span>
+                    <span className="text-base text-white sm:text-lg">
+                      {SITE.whatsapp}
+                    </span>
                   </span>
                 </a>
               </li>
@@ -86,26 +88,26 @@ export default function Footer() {
                   href={SITE.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-start gap-3 text-white transition-colors hover:text-[--color-brand-gold]"
+                  className="group flex items-start gap-3 transition-colors hover:text-[--color-brand-gold]"
                 >
-                  <AtSign className="mt-1 h-5 w-5 shrink-0 text-[--color-brand-gold]" />
+                  <AtSign className="mt-1 h-5 w-5 shrink-0 text-white" />
                   <span>
                     <span className="block text-base font-semibold text-white sm:text-lg">
                       Instagram
                     </span>
-                    <span className="text-base sm:text-lg">
+                    <span className="text-base text-white sm:text-lg">
                       {SITE.instagramHandle}
                     </span>
                   </span>
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-white">
-                <MapPin className="mt-1 h-5 w-5 shrink-0 text-[--color-brand-gold]" />
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-1 h-5 w-5 shrink-0 text-white" />
                 <span>
                   <span className="block text-base font-semibold text-white sm:text-lg">
                     Alamat
                   </span>
-                  <span className="text-base leading-relaxed sm:text-lg">
+                  <span className="text-base leading-relaxed text-white sm:text-lg">
                     {SITE.address}
                   </span>
                 </span>

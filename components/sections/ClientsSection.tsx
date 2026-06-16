@@ -23,10 +23,10 @@ export default function ClientsSection() {
     <section
       ref={sectionRef}
       id="klien"
-      className="section-tone-blue relative flex min-h-svh flex-col py-12 sm:py-16"
+      className="section-tone-blue relative py-12 sm:py-16"
     >
       <div className={`${PAGE_CONTAINER} shrink-0`}>
-        <div className="section-reveal mx-auto mb-8 max-w-2xl text-center lg:mb-10">
+        <div className="section-reveal mx-auto mb-3 max-w-2xl text-center lg:mb-4">
           <span className="eyebrow-label">Klien Kami</span>
           <h2 className="text-3xl font-semibold leading-tight text-[--color-brand-white] sm:text-4xl lg:text-5xl">
             Dipercaya Perusahaan & Instansi Terkemuka
@@ -38,10 +38,7 @@ export default function ClientsSection() {
         </div>
       </div>
 
-      <div className="clients-enter relative flex flex-1 items-center overflow-hidden py-4">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-24" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent sm:w-24" />
-
+      <div className="clients-enter relative overflow-hidden py-2">
         <div className="clients-marquee trust-marquee flex w-max items-center gap-10 py-3 sm:gap-14">
           {items.map((client, index) => (
             <div

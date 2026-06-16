@@ -2,8 +2,7 @@
 
 import { ReactLenis, useLenis } from "lenis/react";
 import { useEffect, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { bindLenisScrollTrigger } from "@/lib/lenis-scroll-trigger";
 
 function LenisScrollTriggerSync() {
   const lenis = useLenis();
@@ -17,19 +16,7 @@ function LenisScrollTriggerSync() {
 
     if (prefersReducedMotion) return;
 
-    lenis.on("scroll", ScrollTrigger.update);
-
-    const tickerCallback = (time: number) => {
-      lenis.raf(time * 1000);
-    };
-
-    gsap.ticker.add(tickerCallback);
-    gsap.ticker.lagSmoothing(0);
-
-    return () => {
-      lenis.off("scroll", ScrollTrigger.update);
-      gsap.ticker.remove(tickerCallback);
-    };
+    return bindLenisScrollTrigger(lenis);
   }, [lenis]);
 
   return null;
@@ -41,16 +28,14 @@ export default function SmoothScroll({
   children: React.ReactNode;
 }) {
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     setReducedMotion(
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
   }, []);
 
-  if (!mounted || reducedMotion) {
+  if (reducedMotion) {
     return <>{children}</>;
   }
 
@@ -61,6 +46,7 @@ export default function SmoothScroll({
         lerp: 0.1,
         duration: 1.2,
         smoothWheel: true,
+        autoRaf: false,
       }}
     >
       <LenisScrollTriggerSync />

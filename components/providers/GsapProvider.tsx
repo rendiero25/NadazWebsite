@@ -19,8 +19,15 @@ export default function GsapProvider({
     }
 
     const revertReducedMotion = setupReducedMotionGsap();
+    const refreshOnLoad = () => {
+      requestAnimationFrame(() => ScrollTrigger.refresh());
+    };
+
+    window.addEventListener("load", refreshOnLoad);
+    requestAnimationFrame(refreshOnLoad);
 
     return () => {
+      window.removeEventListener("load", refreshOnLoad);
       revertReducedMotion();
     };
   }, []);

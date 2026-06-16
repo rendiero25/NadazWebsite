@@ -1,7 +1,8 @@
 "use client";
 
 import type { RefObject } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { SCROLL_READY_EVENT, refreshScrollTriggers } from "@/lib/lenis-scroll-trigger";
 import { prefersReducedMotion } from "@/lib/motion";
 
 interface UseScrollRevealOptions {
@@ -52,8 +53,22 @@ export function useScrollReveal(
           start,
           toggleActions: "play none none none",
           once,
+          invalidateOnRefresh: true,
         },
       });
+
+      const handleRefresh = () => {
+        refreshScrollTriggers();
+      };
+
+      window.addEventListener(SCROLL_READY_EVENT, handleRefresh);
+      window.addEventListener("load", handleRefresh);
+      requestAnimationFrame(handleRefresh);
+
+      return () => {
+        window.removeEventListener(SCROLL_READY_EVENT, handleRefresh);
+        window.removeEventListener("load", handleRefresh);
+      };
     },
     { scope: scopeRef }
   );

@@ -1,6 +1,13 @@
 import { ASSETS } from "@/lib/assets";
+import { getProjectGallery } from "@/lib/portfolio-galleries";
 
-export type PortfolioCategory = "Glassboard" | "Cermin" | "Partisi";
+export type PortfolioCategory =
+  | "Glassboard"
+  | "Glasstone"
+  | "Cermin"
+  | "Etalase"
+  | "Partisi"
+  | "Jendela & Aluminium";
 
 export interface Product {
   id: string;
@@ -17,7 +24,10 @@ export interface PortfolioProject {
   category: PortfolioCategory;
   location: string;
   image: string;
+  gallery: string[];
 }
+
+type PortfolioProjectInput = Omit<PortfolioProject, "gallery">;
 
 export interface ClientItem {
   name: string;
@@ -40,73 +50,77 @@ export interface StatItem {
   label: string;
 }
 
-export const PRODUCTS: Product[] = [
+export const MAIN_PRODUCTS: Product[] = [
   {
-    id: "magnetic-glassboard",
-    name: "Magnetic Glassboard",
+    id: "glassboard",
+    name: "Glassboard",
     description:
-      "Presentasi lebih profesional — papan tulis kaca magnet tahan gores, mudah dibersihkan, dan tampil premium di ruang meeting serta kantor eksekutif.",
-    image: ASSETS.products["magnetic-glassboard"],
-    category: "Glassboard",
+      "Magnetic glassboard, standing glassboard, dan glassboard frame — papan tulis kaca premium tahan gores untuk ruang meeting, kantor eksekutif, dan instansi.",
+    image: "/images/products/GLASSBOARD/Foto glassboard/IMG_0534.jpg",
+    category: "Produk Utama",
   },
   {
-    id: "standing-glassboard",
-    name: "Standing Glassboard",
+    id: "cermin",
+    name: "Cermin",
     description:
-      "Fleksibel dipindah ke ruang mana saja. Cocok untuk brainstorming cepat dan sesi kolaborasi tanpa perlu renovasi permanen.",
-    image: ASSETS.products["standing-glassboard"],
-    category: "Glassboard",
+      "Cermin besar, home gym, kaki roda, toilet & wastafel — tempered custom 5–6 mm dengan ukuran presisi untuk hunian, studio, dan area komersial.",
+    image:
+      "/images/products/CERMIN BESAR/Pak Heri Aji Tebet jaksel/16-4-2026 foto(2).jpg",
+    category: "Produk Utama",
   },
-  {
-    id: "cermin-gym",
-    name: "Cermin Gym",
-    description:
-      "Cermin tempered tebal 5–6 mm — aman untuk area latihan intensif, pantulan presisi tanpa distorsi, terpasang kokoh di dinding beton maupun gypsum.",
-    image: ASSETS.products["cermin-gym"],
-    category: "Cermin",
-  },
-  {
-    id: "cermin-toilet",
-    name: "Cermin Toilet / Studio",
-    description:
-      "Ukuran custom sesuai ruang Anda — tepi halus, pantulan jernih untuk kamar mandi, salon, dan studio kecantikan yang butuh presisi.",
-    image: ASSETS.products["cermin-toilet"],
-    category: "Cermin",
-  },
+];
+
+export const OTHER_PRODUCTS: Product[] = [
   {
     id: "partisi-kaca",
     name: "Partisi Kaca",
     description:
       "Membagi ruang tanpa kehilangan cahaya alami. Frame aluminium presisi, kokoh, dan mudah dirawat untuk kantor maupun area komersial.",
-    image: ASSETS.products["partisi-kaca"],
-    category: "Partisi",
+    image: "/images/products/partisikaca.jpg",
+    category: "Produk Lainnya",
   },
   {
     id: "pintu-aluminium",
     name: "Pintu & Jendela Aluminium",
     description:
       "Sistem bukaan tahan lama dengan engsel dan kunci berkualitas — finishing rapi untuk hunian maupun area komersial dengan traffic tinggi.",
-    image: ASSETS.products["pintu-aluminium"],
-    category: "Aluminium",
+    image: "/images/products/pintualuminium.jpg",
+    category: "Produk Lainnya",
   },
 ];
 
-export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
-  {
-    id: "sampoerna",
-    client: "PT. HM Sampoerna Tbk",
-    type: "Glasstone / Glassboard Premium",
-    category: "Glassboard",
-    location: "Jakarta",
-    image: "/images/clients/sampoerna.jpg",
-  },
+const PORTFOLIO_PROJECTS_BASE: PortfolioProjectInput[] = [
   {
     id: "timah-karya",
     client: "PT. Timah Karya Persada Properti",
     type: "Magnetic Glassboard",
     category: "Glassboard",
     location: "Jakarta",
-    image: ASSETS.products["magnetic-glassboard"],
+    image: ASSETS.portfolio["timah-karya"],
+  },
+  {
+    id: "glassboard-showcase",
+    client: "Berbagai Instansi & Kantor",
+    type: "Glassboard Premium",
+    category: "Glassboard",
+    location: "Jabodetabek",
+    image: ASSETS.portfolio["glassboard-showcase"],
+  },
+  {
+    id: "glassboard-frame",
+    client: "Proyek Kantor",
+    type: "Glassboard dengan Frame Aluminium",
+    category: "Glassboard",
+    location: "Jabodetabek",
+    image: ASSETS.portfolio["glassboard-frame"],
+  },
+  {
+    id: "sampoerna-glasstone",
+    client: "PT. HM Sampoerna Tbk",
+    type: "Glasstone / Glassboard Premium",
+    category: "Glasstone",
+    location: "Jakarta",
+    image: ASSETS.portfolio["glasstone-sampoerna"],
   },
   {
     id: "sd-sqii",
@@ -122,7 +136,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     type: "Cermin Gym 400 × 180 cm",
     category: "Cermin",
     location: "Tebet, Jakarta Selatan",
-    image: ASSETS.products["cermin-gym"],
+    image: ASSETS.portfolio["heri-tebet"],
   },
   {
     id: "liza-tangerang",
@@ -135,42 +149,99 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
     id: "dyah-depok",
     client: "Bu Dyah — Kukusan Depok",
-    type: "Cermin Besar Custom",
+    type: "Cermin Besar Custom 730 × 200 cm",
     category: "Cermin",
     location: "Depok",
     image: ASSETS.portfolio["dyah-depok"],
   },
   {
-    id: "sma-insan-cendekia",
-    client: "SMA Insan Cendekia Boarding School",
-    type: "Etalase Kaca & Aluminium",
-    category: "Partisi",
-    location: "Sentul, Bogor",
-    image: ASSETS.about,
+    id: "cermin-besar-showcase",
+    client: "Proyek Residensial & Komersial",
+    type: "Cermin Dinding Besar Custom",
+    category: "Cermin",
+    location: "Jabodetabek",
+    image: ASSETS.portfolio["cermin-besar-showcase"],
   },
   {
-    id: "lemari-piala",
-    client: "Instansi Pendidikan",
-    type: "Etalase Lemari Piala Kaca",
-    category: "Partisi",
+    id: "cermin-home-gym",
+    client: "Home Gym Premium",
+    type: "Cermin Gym Tempered",
+    category: "Cermin",
     location: "Jabodetabek",
-    image: ASSETS.products["cermin-toilet"],
+    image: ASSETS.portfolio["cermin-home-gym"],
+  },
+  {
+    id: "cermin-kaki-roda",
+    client: "Studio & Salon",
+    type: "Cermin dengan Kaki Roda",
+    category: "Cermin",
+    location: "Jabodetabek",
+    image: ASSETS.portfolio["cermin-kaki-roda"],
+  },
+  {
+    id: "cermin-toilet-wastafel",
+    client: "Hunian & Komersial",
+    type: "Cermin Toilet & Wastafel",
+    category: "Cermin",
+    location: "Jabodetabek",
+    image: ASSETS.portfolio["cermin-toilet-wastafel"],
   },
   {
     id: "coak-kaca",
     client: "Proyek Komersial",
     type: "Coak & Potongan Kaca Presisi",
+    category: "Cermin",
+    location: "Jabodetabek",
+    image: ASSETS.portfolio["coak-kaca"],
+  },
+  {
+    id: "sma-insan-cendekia",
+    client: "SMA Insan Cendekia Boarding School",
+    type: "Etalase Kaca & Aluminium",
+    category: "Etalase",
+    location: "Sentul, Bogor",
+    image: ASSETS.portfolio["sma-insan-cendekia"],
+  },
+  {
+    id: "lemari-piala",
+    client: "Instansi Pendidikan",
+    type: "Etalase Lemari Piala Kaca",
+    category: "Etalase",
+    location: "Jabodetabek",
+    image: ASSETS.portfolio["lemari-piala"],
+  },
+  {
+    id: "partisi-kaca",
+    client: "Proyek Kantor & Komersial",
+    type: "Partisi Kaca",
     category: "Partisi",
     location: "Jabodetabek",
-    image: ASSETS.products["partisi-kaca"],
+    image: ASSETS.portfolio["partisi-kaca"],
+  },
+  {
+    id: "jendela-aluminium",
+    client: "Proyek Residensial & Komersial",
+    type: "Pintu & Jendela Aluminium",
+    category: "Jendela & Aluminium",
+    location: "Jabodetabek",
+    image: ASSETS.portfolio["jendela-aluminium"],
   },
 ];
+
+export const PORTFOLIO_PROJECTS: PortfolioProject[] =
+  PORTFOLIO_PROJECTS_BASE.map((project) => ({
+    ...project,
+    gallery: getProjectGallery(project.id, project.image),
+  }));
 
 export const PORTFOLIO_FILTERS: Array<"Semua" | PortfolioCategory> = [
   "Semua",
   "Glassboard",
+  "Glasstone",
   "Cermin",
+  "Etalase",
   "Partisi",
+  "Jendela & Aluminium",
 ];
 
 export const CLIENTS: ClientItem[] = [

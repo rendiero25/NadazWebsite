@@ -31,6 +31,7 @@ export default function ContactSection() {
             start: "top 88%",
             toggleActions: "play none none none",
             once: true,
+            invalidateOnRefresh: true,
           },
         }
       );
@@ -73,7 +74,7 @@ export default function ContactSection() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 text-sm text-[--color-brand-muted] transition-colors hover:text-[--color-brand-white]"
               >
-                <MessageCircle className="h-4 w-4 text-[--color-brand-gold]" />
+                <MessageCircle className="h-4 w-4 text-white" />
                 {SITE.whatsapp}
               </a>
             </li>
@@ -84,12 +85,12 @@ export default function ContactSection() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 text-sm text-[--color-brand-muted] transition-colors hover:text-[--color-brand-white]"
               >
-                <AtSign className="h-4 w-4 text-[--color-brand-gold]" />
+                <AtSign className="h-4 w-4 text-white" />
                 {SITE.instagramHandle}
               </a>
             </li>
             <li className="contact-reveal flex items-start justify-center gap-3 text-sm text-[--color-brand-muted]">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[--color-brand-gold]" />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-white" />
               {SITE.address}
             </li>
           </ul>
