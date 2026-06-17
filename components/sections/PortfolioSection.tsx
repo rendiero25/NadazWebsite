@@ -4,6 +4,7 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import { Images, MapPin } from "lucide-react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/motion";
+import { withPageScroller } from "@/lib/lenis-scroll-trigger";
 import SectionShell from "@/components/sections/SectionShell";
 import PortfolioGalleryDialog from "@/components/sections/PortfolioGalleryDialog";
 import {
@@ -13,6 +14,7 @@ import {
   type PortfolioProject,
 } from "@/lib/data";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useGsapScroll } from "@/hooks/useGsapScroll";
 import { SITE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import AssetImage from "@/components/ui/AssetImage";
@@ -42,9 +44,9 @@ export default function PortfolioSection() {
   useScrollReveal(sectionRef, { selector: ".portfolio-filter", stagger: 0.06 });
   useScrollReveal(sectionRef, { selector: ".portfolio-cta", stagger: 0, y: 24 });
 
-  useGSAP(
+  useGsapScroll(
     () => {
-      if (prefersReducedMotion() || !sectionRef.current) return;
+      if (!sectionRef.current) return;
 
       const cards = sectionRef.current.querySelectorAll(".portfolio-card");
       if (cards.length === 0) return;
@@ -65,24 +67,21 @@ export default function PortfolioSection() {
           ...(isFilterChange
             ? {}
             : {
-                scrollTrigger: {
+                scrollTrigger: withPageScroller({
                   trigger: sectionRef.current,
                   start: "top 82%",
                   toggleActions: "play none none none",
                   once: true,
-                  invalidateOnRefresh: true,
-                },
+                }),
               }),
         }
       );
 
       hasAnimatedPortfolio.current = true;
     },
-    {
-      scope: sectionRef,
-      dependencies: [activeFilter],
-      revertOnUpdate: true,
-    }
+    sectionRef,
+    [activeFilter],
+    { revertOnUpdate: true }
   );
 
   return (

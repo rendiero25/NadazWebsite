@@ -1,9 +1,10 @@
 "use client";
 
 import type { RefObject } from "react";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
-import { SCROLL_READY_EVENT, refreshScrollTriggers } from "@/lib/lenis-scroll-trigger";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { refreshScrollTriggers, withPageScroller } from "@/lib/lenis-scroll-trigger";
 import { prefersReducedMotion } from "@/lib/motion";
+import { useScrollReady } from "@/hooks/useScrollReady";
 
 interface UseScrollRevealOptions {
   selector?: string;
@@ -31,9 +32,11 @@ export function useScrollReveal(
     once = true,
   } = options;
 
+  const scrollReady = useScrollReady();
+
   useGSAP(
     () => {
-      if (prefersReducedMotion() || !scopeRef.current) return;
+      if (!scrollReady || prefersReducedMotion() || !scopeRef.current) return;
 
       const targets = scopeRef.current.querySelectorAll(selector);
       if (targets.length === 0) return;
@@ -48,28 +51,16 @@ export function useScrollReveal(
         duration,
         ease,
         force3D: true,
-        scrollTrigger: {
+        scrollTrigger: withPageScroller({
           trigger: scopeRef.current,
           start,
           toggleActions: "play none none none",
           once,
-          invalidateOnRefresh: true,
-        },
+        }),
       });
 
-      const handleRefresh = () => {
-        refreshScrollTriggers();
-      };
-
-      window.addEventListener(SCROLL_READY_EVENT, handleRefresh);
-      window.addEventListener("load", handleRefresh);
-      requestAnimationFrame(handleRefresh);
-
-      return () => {
-        window.removeEventListener(SCROLL_READY_EVENT, handleRefresh);
-        window.removeEventListener("load", handleRefresh);
-      };
+      refreshScrollTriggers();
     },
-    { scope: scopeRef }
+    { scope: scopeRef, dependencies: [scrollReady] }
   );
 }

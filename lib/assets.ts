@@ -8,7 +8,7 @@ export const ASSETS = {
   heroPoster: "/images/hero/light-through-glass-poster.jpg",
   heroVideoMp4: "/videos/hero-light-through-glass.mp4",
   heroVideoWebm: "/videos/hero-light-through-glass.webm",
-  about: "/images/about/insan-cendekia.jpg",
+  about: "/images/products/CERMIN KAKI RODA/IMG_1111.jpg",
   products: {
     glassboard:
       "/images/products/GLASSBOARD/Foto glassboard/IMG_0451.jpg",
@@ -48,8 +48,9 @@ export const ASSETS = {
     "coak-kaca": "/images/products/Coak kaca/IMG-20241012-WA0012.jpg",
     "glasstone-sampoerna":
       "/images/products/GLASSTONE/PT. HM Sampoerna/PT. HM Sampoerna.jpg",
-    "partisi-kaca": "/images/products/partisikaca.jpg",
-    "jendela-aluminium": "/images/products/pintualuminium.jpg",
+    "partisi-kaca": "/images/products/partisikaca/partisikaca.jpg",
+    "jendela-aluminium":
+      "/images/products/pintudanjendelaaluminium/pintualuminium.jpg",
   },
 } as const;
 

@@ -2,10 +2,11 @@
 
 import { useRef } from "react";
 import { AtSign, MapPin, MessageCircle } from "lucide-react";
-import { gsap, useGSAP } from "@/lib/gsap";
-import { prefersReducedMotion } from "@/lib/motion";
+import { gsap } from "@/lib/gsap";
+import { withPageScroller } from "@/lib/lenis-scroll-trigger";
 import { SITE } from "@/lib/constants";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useGsapScroll } from "@/hooks/useGsapScroll";
 import { PAGE_CONTAINER } from "@/lib/utils";
 
 export default function ContactSection() {
@@ -13,12 +14,13 @@ export default function ContactSection() {
 
   useScrollReveal(sectionRef, { selector: ".contact-reveal", stagger: 0.1 });
 
-  useGSAP(
+  useGsapScroll(
     () => {
-      if (prefersReducedMotion() || !sectionRef.current) return;
+      const map = sectionRef.current?.querySelector(".contact-map");
+      if (!map) return;
 
       gsap.fromTo(
-        ".contact-map",
+        map,
         { autoAlpha: 0, y: 28, force3D: true },
         {
           autoAlpha: 1,
@@ -26,17 +28,16 @@ export default function ContactSection() {
           duration: 0.95,
           ease: "power3.out",
           force3D: true,
-          scrollTrigger: {
-            trigger: ".contact-map",
+          scrollTrigger: withPageScroller({
+            trigger: map,
             start: "top 88%",
             toggleActions: "play none none none",
             once: true,
-            invalidateOnRefresh: true,
-          },
+          }),
         }
       );
     },
-    { scope: sectionRef }
+    sectionRef
   );
 
   return (

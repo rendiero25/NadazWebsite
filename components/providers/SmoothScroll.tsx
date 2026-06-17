@@ -2,7 +2,12 @@
 
 import { ReactLenis, useLenis } from "lenis/react";
 import { useEffect, useState } from "react";
-import { bindLenisScrollTrigger } from "@/lib/lenis-scroll-trigger";
+import {
+  applyScrollDefaults,
+  bindLenisScrollTrigger,
+  syncAllScrollTriggers,
+} from "@/lib/lenis-scroll-trigger";
+import { markScrollReady } from "@/lib/scroll-ready";
 
 function LenisScrollTriggerSync() {
   const lenis = useLenis();
@@ -34,6 +39,16 @@ export default function SmoothScroll({
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
   }, []);
+
+  useEffect(() => {
+    if (!reducedMotion) return;
+
+    applyScrollDefaults();
+    requestAnimationFrame(() => {
+      syncAllScrollTriggers();
+      markScrollReady();
+    });
+  }, [reducedMotion]);
 
   if (reducedMotion) {
     return <>{children}</>;

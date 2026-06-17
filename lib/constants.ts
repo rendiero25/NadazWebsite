@@ -5,8 +5,8 @@ export const SITE = {
   url: "https://nadaz.co.id",
   whatsapp: "082124809191",
   whatsappLink: "https://wa.me/6282124809191",
-  instagram: "https://www.instagram.com/glassboardindonesia/",
-  instagramHandle: "@glassboardindonesia",
+  instagram: "https://www.instagram.com/nadazglassindo/",
+  instagramHandle: "@nadazglassindo",
   address: "Jl. Dayaguna III No. 99A, Mampang, Pancoran Mas, Kota Depok",
   mapsEmbed:
     "https://maps.google.com/maps?q=Jl.+Dayaguna+III+No.+99A,+Pancoran+Mas,+Kota+Depok,+Jawa+Barat&hl=id&z=16&output=embed",

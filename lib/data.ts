@@ -7,7 +7,7 @@ export type PortfolioCategory =
   | "Cermin"
   | "Etalase"
   | "Partisi"
-  | "Jendela & Aluminium";
+  | "Pintu & Jendela Aluminium";
 
 export interface Product {
   id: string;
@@ -32,6 +32,7 @@ type PortfolioProjectInput = Omit<PortfolioProject, "gallery">;
 export interface ClientItem {
   name: string;
   logo?: string;
+  logoClassName?: string;
 }
 
 export interface Testimonial {
@@ -76,7 +77,7 @@ export const OTHER_PRODUCTS: Product[] = [
     name: "Partisi Kaca",
     description:
       "Membagi ruang tanpa kehilangan cahaya alami. Frame aluminium presisi, kokoh, dan mudah dirawat untuk kantor maupun area komersial.",
-    image: "/images/products/partisikaca.jpg",
+    image: "/images/products/partisikaca/partisikaca.jpg",
     category: "Produk Lainnya",
   },
   {
@@ -84,7 +85,7 @@ export const OTHER_PRODUCTS: Product[] = [
     name: "Pintu & Jendela Aluminium",
     description:
       "Sistem bukaan tahan lama dengan engsel dan kunci berkualitas — finishing rapi untuk hunian maupun area komersial dengan traffic tinggi.",
-    image: "/images/products/pintualuminium.jpg",
+    image: "/images/products/pintudanjendelaaluminium/pintualuminium.jpg",
     category: "Produk Lainnya",
   },
 ];
@@ -222,7 +223,7 @@ const PORTFOLIO_PROJECTS_BASE: PortfolioProjectInput[] = [
     id: "jendela-aluminium",
     client: "Proyek Residensial & Komersial",
     type: "Pintu & Jendela Aluminium",
-    category: "Jendela & Aluminium",
+    category: "Pintu & Jendela Aluminium",
     location: "Jabodetabek",
     image: ASSETS.portfolio["jendela-aluminium"],
   },
@@ -234,20 +235,22 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] =
     gallery: getProjectGallery(project.id, project.image),
   }));
 
+/** Semua proyek portofolio untuk slideshow panel kanan hero */
+export const HERO_PORTFOLIO_SLIDES: PortfolioProject[] = PORTFOLIO_PROJECTS;
+
 export const PORTFOLIO_FILTERS: Array<"Semua" | PortfolioCategory> = [
   "Semua",
   "Glassboard",
   "Glasstone",
   "Cermin",
-  "Etalase",
   "Partisi",
-  "Jendela & Aluminium",
+  "Pintu & Jendela Aluminium",
 ];
 
 export const CLIENTS: ClientItem[] = [
   { name: "PT. HM Sampoerna Tbk", logo: "/logo/sampoerna.png" },
   { name: "IFIT Indonesia", logo: "/logo/ifit.png" },
-  { name: "Kementerian Perindustrian RI", logo: "/logo/kemenper.png" },
+  { name: "Kementerian Perindustrian RI", logo: "/logo/kemenper.png", logoClassName: "h-16 max-w-[104px] sm:h-[4.5rem] sm:max-w-[118px]" },
   { name: "BNN", logo: "/logo/bnn.png" },
   { name: "Polda Metro Jaya", logo: "/logo/polda.png" },
   { name: "Mie Gacoan", logo: "/logo/gacoan.webp" },

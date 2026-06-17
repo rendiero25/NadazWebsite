@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { PAGE_CONTAINER } from "@/lib/utils";
+import { PAGE_CONTAINER, cn } from "@/lib/utils";
 import { assetUrl } from "@/lib/assets";
 import { CLIENTS } from "@/lib/data";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -51,7 +51,10 @@ export default function ClientsSection() {
                   alt={`Logo ${client.name}`}
                   width={72}
                   height={72}
-                  className="h-14 w-auto max-w-[88px] object-contain opacity-90 grayscale-[15%] transition-opacity duration-300 hover:opacity-100 sm:h-16"
+                  className={cn(
+                    "h-14 w-auto max-w-[88px] object-contain opacity-90 grayscale-[15%] transition-opacity duration-300 hover:opacity-100 sm:h-16",
+                    client.logoClassName
+                  )}
                 />
               ) : (
                 <span className="flex h-14 w-14 items-center justify-center rounded-full border border-[--color-brand-gold]/30 text-lg font-semibold text-[--color-brand-gold] sm:h-16 sm:w-16">

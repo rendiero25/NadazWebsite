@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { SITE } from "@/lib/constants";
-import { ASSETS } from "@/lib/assets";
+import { HERO_PORTFOLIO_SLIDES } from "@/lib/data";
 import { prefersReducedMotion } from "@/lib/motion";
+import { withPageScroller } from "@/lib/lenis-scroll-trigger";
+import { useGsapScroll } from "@/hooks/useGsapScroll";
 import { cn, PAGE_CONTAINER } from "@/lib/utils";
+import AssetImage from "@/components/ui/AssetImage";
 
 const STATS = [
   { num: "500+", label: "Proyek Selesai" },
@@ -14,58 +16,19 @@ const STATS = [
   { num: "100+", label: "Klien Korporat" },
 ] as const;
 
-const HERO_SLIDES = [
-  {
-    src: ASSETS.hero,
-    alt: "Glassboard korporat NADAZ terpasang di kantor klien",
-  },
-  {
-    src: ASSETS.heroPoster,
-    alt: "Cahaya menembus kaca tempered NADAZ",
-  },
-  {
-    src: ASSETS.products["cermin-home-gym"],
-    alt: "Cermin gym tempered NADAZ",
-  },
-  {
-    src: ASSETS.portfolio["sd-sqii"],
-    alt: "Partisi kaca proyek instansi pendidikan",
-  },
-] as const;
-
-const PROJECT_CARDS = [
-  {
-    title: "PT HM Sampoerna — Glassboard Korporat",
-    location: "Jakarta Selatan",
-    detail: "Kaca Tempered 12mm",
-  },
-  {
-    title: "Insan Cendekia — Partisi Kaca",
-    location: "Jabodetabek",
-    detail: "Partisi Tempered Presisi",
-  },
-  {
-    title: "Studio Fitness — Cermin Gym",
-    location: "Tangerang",
-    detail: "Cermin 5–6mm Tempered",
-  },
-  {
-    title: "Usaha Kuliner — Cermin Custom",
-    location: "Depok",
-    detail: "730 × 200 cm Tempered",
-  },
-] as const;
-
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const [slideIndex, setSlideIndex] = useState(0);
+  const activeProject = HERO_PORTFOLIO_SLIDES[slideIndex];
 
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion() || HERO_PORTFOLIO_SLIDES.length === 0) return;
 
     const timer = window.setInterval(() => {
-      setSlideIndex((current) => (current + 1) % HERO_SLIDES.length);
+      setSlideIndex(
+        (current) => (current + 1) % HERO_PORTFOLIO_SLIDES.length
+      );
     }, 3000);
 
     return () => window.clearInterval(timer);
@@ -132,22 +95,29 @@ export default function HeroSection() {
           { autoAlpha: 1, y: 0, duration: 0.5, force3D: true },
           "-=0.2"
         );
+    },
+    { scope: sectionRef }
+  );
 
-      gsap.to(".hero-content", {
+  useGsapScroll(
+    () => {
+      const heroContent = sectionRef.current?.querySelector(".hero-content");
+      if (!heroContent || !sectionRef.current) return;
+
+      gsap.to(heroContent, {
         yPercent: 10,
         autoAlpha: 0.55,
         ease: "none",
         force3D: true,
-        scrollTrigger: {
+        scrollTrigger: withPageScroller({
           trigger: sectionRef.current,
           start: "top top",
           end: "75% top",
           scrub: 1,
-          invalidateOnRefresh: true,
-        },
+        }),
       });
     },
-    { scope: sectionRef }
+    sectionRef
   );
 
   return (
@@ -227,36 +197,38 @@ export default function HeroSection() {
         ref={panelRef}
         className="absolute inset-0 right-0 hidden lg:left-[55%] lg:block lg:w-[45%]"
       >
-        {HERO_SLIDES.map((slide, index) => (
-          <Image
-            key={slide.src}
-            src={slide.src}
-            alt={slide.alt}
-            fill
+        {HERO_PORTFOLIO_SLIDES.map((project, index) => (
+          <AssetImage
+            key={project.id}
+            src={project.image}
+            alt={`${project.type} — ${project.client}, ${project.location}`}
             priority={index === 0}
+            sizes="45vw"
             className={cn(
-              "object-cover object-center transition-opacity duration-300",
+              "absolute inset-0 transition-opacity duration-300",
               index === slideIndex
                 ? "hero-slide-active z-[1] opacity-100"
                 : "z-0 opacity-0"
             )}
-            sizes="45vw"
+            imageClassName="object-center"
           />
         ))}
 
-        <div className="hero-project-card absolute bottom-10 left-8 right-8 z-20 rounded-xl border-l-2 border-[--color-brand-gold] bg-white/90 p-4 shadow-lg backdrop-blur-md">
-          <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-widest text-[--color-brand-gold]">
-            ✦ Featured Project
-          </p>
-          <p className="text-sm font-semibold text-[--color-brand-white]">
-            {PROJECT_CARDS[slideIndex].title}
-          </p>
-          <div className="mt-1 flex items-center gap-2 text-xs text-[--color-brand-muted]">
-            <span>{PROJECT_CARDS[slideIndex].location}</span>
-            <span className="text-[--color-brand-gold]">·</span>
-            <span>{PROJECT_CARDS[slideIndex].detail}</span>
+        {activeProject && (
+          <div className="hero-project-card absolute bottom-10 left-8 right-8 z-20 rounded-xl border-l-2 border-[--color-brand-gold] bg-white/90 p-4 shadow-lg backdrop-blur-md">
+            <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-widest text-[--color-brand-gold]">
+              ✦ Proyek Unggulan
+            </p>
+            <p className="text-sm font-semibold text-[--color-brand-white]">
+              {activeProject.client} — {activeProject.type}
+            </p>
+            <div className="mt-1 flex items-center gap-2 text-xs text-[--color-brand-muted]">
+              <span>{activeProject.location}</span>
+              <span className="text-[--color-brand-gold]">·</span>
+              <span>{activeProject.category}</span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

@@ -3,15 +3,46 @@
 import type Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { markScrollReady } from "@/lib/scroll-ready";
 
-export const SCROLL_READY_EVENT = "nadaz:scroll-ready";
+export { SCROLL_READY_EVENT } from "@/lib/scroll-ready";
 
-function getScrollElement(): HTMLElement {
+export function getScrollElement(): HTMLElement {
   return document.documentElement;
 }
 
+export function withPageScroller(
+  config: ScrollTrigger.Vars
+): ScrollTrigger.Vars {
+  return {
+    ...config,
+    scroller: getScrollElement(),
+    invalidateOnRefresh: config.invalidateOnRefresh ?? true,
+  };
+}
+
+export function applyScrollDefaults(): void {
+  if (typeof window === "undefined") return;
+  ScrollTrigger.defaults({ scroller: getScrollElement() });
+}
+
+export function syncAllScrollTriggers(): void {
+  if (typeof window === "undefined") return;
+
+  const scroller = getScrollElement();
+  applyScrollDefaults();
+  ScrollTrigger.getAll().forEach((trigger) => {
+    trigger.scroller = scroller;
+  });
+  ScrollTrigger.refresh();
+}
+
+function getScrollElementForProxy(): HTMLElement {
+  return getScrollElement();
+}
+
 export function bindLenisScrollTrigger(lenis: Lenis): () => void {
-  const scrollElement = getScrollElement();
+  const scrollElement = getScrollElementForProxy();
 
   ScrollTrigger.scrollerProxy(scrollElement, {
     scrollTop(value) {
@@ -46,7 +77,7 @@ export function bindLenisScrollTrigger(lenis: Lenis): () => void {
   gsap.ticker.lagSmoothing(0);
 
   const refreshScrollTriggers = () => {
-    ScrollTrigger.refresh();
+    syncAllScrollTriggers();
   };
 
   requestAnimationFrame(refreshScrollTriggers);
@@ -59,7 +90,7 @@ export function bindLenisScrollTrigger(lenis: Lenis): () => void {
   };
 
   window.addEventListener("resize", onResize);
-  window.dispatchEvent(new CustomEvent(SCROLL_READY_EVENT));
+  markScrollReady();
 
   return () => {
     window.removeEventListener("load", refreshScrollTriggers);
@@ -73,6 +104,5 @@ export function bindLenisScrollTrigger(lenis: Lenis): () => void {
 }
 
 export function refreshScrollTriggers() {
-  if (typeof window === "undefined") return;
-  requestAnimationFrame(() => ScrollTrigger.refresh());
+  syncAllScrollTriggers();
 }

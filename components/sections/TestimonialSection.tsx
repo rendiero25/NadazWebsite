@@ -3,12 +3,13 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { Star } from "lucide-react";
-import { gsap, useGSAP } from "@/lib/gsap";
-import { prefersReducedMotion } from "@/lib/motion";
+import { gsap } from "@/lib/gsap";
+import { withPageScroller } from "@/lib/lenis-scroll-trigger";
 import SectionShell from "@/components/sections/SectionShell";
 import { assetUrl } from "@/lib/assets";
 import { TESTIMONIALS } from "@/lib/data";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useGsapScroll } from "@/hooks/useGsapScroll";
 import { cn } from "@/lib/utils";
 
 const AVATAR_OBJECT_POSITION: Partial<Record<string, string>> = {
@@ -44,12 +45,12 @@ export default function TestimonialSection() {
     stagger: 0.1,
   });
 
-  useGSAP(
+  useGsapScroll(
     () => {
-      if (prefersReducedMotion() || !sectionRef.current) return;
+      if (!sectionRef.current) return;
 
       gsap.fromTo(
-        ".testimonial-stars svg",
+        sectionRef.current.querySelectorAll(".testimonial-stars svg"),
         { scale: 0, autoAlpha: 0, force3D: true },
         {
           scale: 1,
@@ -58,17 +59,16 @@ export default function TestimonialSection() {
           duration: 0.45,
           ease: "back.out(2)",
           force3D: true,
-          scrollTrigger: {
+          scrollTrigger: withPageScroller({
             trigger: sectionRef.current,
             start: "top 80%",
             toggleActions: "play none none none",
             once: true,
-            invalidateOnRefresh: true,
-          },
+          }),
         }
       );
     },
-    { scope: sectionRef }
+    sectionRef
   );
 
   return (

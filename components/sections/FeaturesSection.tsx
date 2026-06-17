@@ -1,11 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { Award, MapPin, Shield, Users } from "lucide-react";
-import { gsap, useGSAP } from "@/lib/gsap";
-import { prefersReducedMotion } from "@/lib/motion";
+import { Award, MapPin, Users } from "lucide-react";
+import { gsap } from "@/lib/gsap";
+import { withPageScroller } from "@/lib/lenis-scroll-trigger";
 import SectionShell from "@/components/sections/SectionShell";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useGsapScroll } from "@/hooks/useGsapScroll";
 
 const FEATURES = [
   {
@@ -13,12 +14,6 @@ const FEATURES = [
     title: "Gratis Ongkir & Pemasangan",
     description:
       "Hemat biaya logistik. Pengiriman dan pemasangan kami tanggung untuk seluruh Jabodetabek.",
-  },
-  {
-    icon: Shield,
-    title: "Kaca Tempered Bersertifikat",
-    description:
-      "Material memenuhi standar keamanan, lebih aman saat pecah dan tahan benturan harian.",
   },
   {
     icon: Award,
@@ -39,12 +34,12 @@ export default function FeaturesSection() {
 
   useScrollReveal(sectionRef, { selector: ".feature-card", stagger: 0.1 });
 
-  useGSAP(
+  useGsapScroll(
     () => {
-      if (prefersReducedMotion() || !sectionRef.current) return;
+      if (!sectionRef.current) return;
 
       gsap.fromTo(
-        ".feature-icon",
+        sectionRef.current.querySelectorAll(".feature-icon"),
         { scale: 0.75, autoAlpha: 0, force3D: true },
         {
           scale: 1,
@@ -53,17 +48,16 @@ export default function FeaturesSection() {
           duration: 0.65,
           ease: "back.out(1.5)",
           force3D: true,
-          scrollTrigger: {
+          scrollTrigger: withPageScroller({
             trigger: sectionRef.current,
             start: "top 78%",
             toggleActions: "play none none none",
             once: true,
-            invalidateOnRefresh: true,
-          },
+          }),
         }
       );
     },
-    { scope: sectionRef }
+    sectionRef
   );
 
   return (
@@ -71,13 +65,13 @@ export default function FeaturesSection() {
       ref={sectionRef}
       id="keunggulan"
       tone="gold"
-      title="Empat Alasan Klien Korporat Memilih NADAZ"
+      title="Tiga Alasan Klien Korporat Memilih NADAZ"
     >
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-3 gap-3 lg:gap-6">
         {FEATURES.map((feature, index) => (
           <div
             key={feature.title}
-            className="feature-card content-card p-6 transition-colors duration-300 hover:bg-[rgba(201,168,76,0.08)] sm:p-7"
+            className="feature-card content-card min-w-0 p-4 transition-colors duration-300 hover:bg-[rgba(201,168,76,0.08)] sm:p-6 lg:p-7"
           >
             <span className="text-xs font-medium text-[--color-brand-gold]/60">
               0{index + 1}
@@ -85,7 +79,7 @@ export default function FeaturesSection() {
             <div className="feature-icon mt-4 flex h-10 w-10 items-center justify-center rounded-lg border border-[--color-brand-gold]/25 bg-[--color-brand-gold]/10">
               <feature.icon className="h-5 w-5 text-[--color-brand-gold]" />
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-[--color-brand-white]">
+            <h3 className="mt-4 text-base font-semibold text-[--color-brand-white] sm:text-lg">
               {feature.title}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-[--color-brand-muted]">

@@ -18,6 +18,10 @@ export default function GsapProvider({
       registered = true;
     }
 
+    if (typeof document !== "undefined") {
+      ScrollTrigger.defaults({ scroller: document.documentElement });
+    }
+
     const revertReducedMotion = setupReducedMotionGsap();
     const refreshOnLoad = () => {
       requestAnimationFrame(() => ScrollTrigger.refresh());
