@@ -8,7 +8,7 @@ export const ASSETS = {
   heroPoster: "/images/hero/light-through-glass-poster.jpg",
   heroVideoMp4: "/videos/hero-light-through-glass.mp4",
   heroVideoWebm: "/videos/hero-light-through-glass.webm",
-  about: "/images/products/CERMIN KAKI RODA/IMG_1111.jpg",
+  about: "/images/about/pic.jpeg",
   products: {
     glassboard:
       "/images/products/GLASSBOARD/Foto glassboard/IMG_0451.jpg",
