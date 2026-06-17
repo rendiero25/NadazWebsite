@@ -48,9 +48,9 @@ export const ASSETS = {
     "coak-kaca": "/images/products/Coak kaca/IMG-20241012-WA0012.jpg",
     "glasstone-sampoerna":
       "/images/products/GLASSTONE/PT. HM Sampoerna/PT. HM Sampoerna.jpg",
-    "partisi-kaca": "/images/products/partisikaca/partisikaca.jpg",
+    "partisi-kaca": "/images/products/partisikaca/partisikaca2.jpeg",
     "jendela-aluminium":
-      "/images/products/pintudanjendelaaluminium/pintualuminium.jpg",
+      "/images/products/pintudanjendelaaluminium/pintualuminium2.jpeg",
   },
 } as const;
 

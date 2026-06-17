@@ -95,11 +95,9 @@ export const PORTFOLIO_GALLERIES: Record<string, readonly string[]> = {
     "/images/products/ETALASE/Foto lemari piala/IMG-20241011-WA0003.jpg",
   ],
   "partisi-kaca": [
-    "/images/products/partisikaca/partisikaca.jpg",
     "/images/products/partisikaca/partisikaca2.jpeg",
   ],
   "jendela-aluminium": [
-    "/images/products/pintudanjendelaaluminium/pintualuminium.jpg",
     "/images/products/pintudanjendelaaluminium/pintualuminium2.jpeg",
   ],
 };

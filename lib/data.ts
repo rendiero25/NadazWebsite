@@ -77,7 +77,7 @@ export const OTHER_PRODUCTS: Product[] = [
     name: "Partisi Kaca",
     description:
       "Membagi ruang tanpa kehilangan cahaya alami. Frame aluminium presisi, kokoh, dan mudah dirawat untuk kantor maupun area komersial.",
-    image: "/images/products/partisikaca/partisikaca.jpg",
+    image: "/images/products/partisikaca/partisikaca2.jpeg",
     category: "Produk Lainnya",
   },
   {
@@ -85,7 +85,7 @@ export const OTHER_PRODUCTS: Product[] = [
     name: "Pintu & Jendela Aluminium",
     description:
       "Sistem bukaan tahan lama dengan engsel dan kunci berkualitas — finishing rapi untuk hunian maupun area komersial dengan traffic tinggi.",
-    image: "/images/products/pintudanjendelaaluminium/pintualuminium.jpg",
+    image: "/images/products/pintudanjendelaaluminium/pintualuminium2.jpeg",
     category: "Produk Lainnya",
   },
 ];
