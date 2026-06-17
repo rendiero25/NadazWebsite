@@ -29,11 +29,7 @@ export function applyScrollDefaults(): void {
 export function syncAllScrollTriggers(): void {
   if (typeof window === "undefined") return;
 
-  const scroller = getScrollElement();
   applyScrollDefaults();
-  ScrollTrigger.getAll().forEach((trigger) => {
-    trigger.scroller = scroller;
-  });
   ScrollTrigger.refresh();
 }
 

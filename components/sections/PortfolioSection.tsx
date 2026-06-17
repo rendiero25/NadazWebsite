@@ -2,8 +2,7 @@
 
 import { useCallback, useMemo, useRef, useState } from "react";
 import { Images, MapPin } from "lucide-react";
-import { gsap, useGSAP } from "@/lib/gsap";
-import { prefersReducedMotion } from "@/lib/motion";
+import { gsap } from "@/lib/gsap";
 import { withPageScroller } from "@/lib/lenis-scroll-trigger";
 import SectionShell from "@/components/sections/SectionShell";
 import PortfolioGalleryDialog from "@/components/sections/PortfolioGalleryDialog";
